@@ -1,19 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Lubesurgeons
 
-First, run the development server:
+A web app for booking vehicle maintenance and servicing
+
+
+## Acknowledgements
+
+ - [Nextjs](https://nextjs.org/)
+ - [My boss](https://github.com/sudhons)
+
+
+## Installation
+
+- In your terminal:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  npm install
+  # or
+  yarn install
+  # or 
+  pnpm install 
+```
+Moved to the Frontend directory with:
+```bash
+  cd client
+```
+Run the development server:
+```bash
+  npm run dev
+```
+Move to the backend directory with:
+```bash
+  cd server
+```
+Run the development server:
+```bash
+  npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Congrats, you have succesfuly installed Lubesurgeons!
+    
+## Appendix
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+You need NodeJS is version 16.0.0 upwards to install this project
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Authors
+
+- [David Onifade](https://www.x.com/zyzer01)
+
+
+## Demo
+
+https://lubesurgeons.vercel.app
+
+
+## Features
+
+- Secure Authentication Pages
+- Robust Form Validation
+- Clean Dashboard
+
+
+## Support
+
+For support, send an email davidicfola@gmail.com
+
+
+## Optimizations
+
+SEO Optimizations and speed using Nextjs, converted the project from a basic react project to Nextjs.
+
