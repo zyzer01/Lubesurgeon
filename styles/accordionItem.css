@@ -1,0 +1,25 @@
+.accordion-item {
+  cursor: pointer;
+}
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.accordion-content.open {
+  max-height: 500px; /* or any other height */
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  fill: #FF9F15;
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon.open {
+  width: 30px;
+  height: 30px;
+  transform: rotate(180deg);
+}
