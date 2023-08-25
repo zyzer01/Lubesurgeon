@@ -18,7 +18,7 @@ const BookingTable = () => {
   const [bookingData, setBookingData] = useState<Booking[]>([]);
   const [cancelModalOpen, setCancelModalOpen] = useState(false);
   const [orderBy, setOrderBy] = useState('created_at');
-  const [visibleBookings, setVisibleBookings] = useState(2);
+  const [visibleBookings, setVisibleBookings] = useState(5);
   const [showAll, setShowAll] = useState(false);
   const [selectedBookingId, setSelectedBookingId] = useState<number | null>(
     null,
@@ -62,12 +62,13 @@ const BookingTable = () => {
   };
 
   useEffect(() => {
-    const fetchBookingData = async () => {
+    const fetchBookingData = async (bookingId: number) => {
       setIsLoading(true);
       try {
         const { data, error } = await supabase
           .from('bookings')
           .select('*')
+          // .eq('id', bookingId)
           .order(orderBy, { ascending: false });
 
         if (error) {
