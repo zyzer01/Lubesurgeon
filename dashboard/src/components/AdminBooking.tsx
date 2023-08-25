@@ -4,7 +4,6 @@ import MyModal from './Modal';
 import { Link } from 'react-router-dom';
 import { Transition } from '@headlessui/react';
 
-
 interface Booking {
   id: number;
   carBrand: string;
@@ -81,7 +80,7 @@ const AdminBooking = () => {
       }
       setIsLoading(false);
     };
-    fetchBookingData();  
+    fetchBookingData();
   }, [orderBy]);
 
   // Function to handle service completion
@@ -178,110 +177,112 @@ const AdminBooking = () => {
                 <th className="py-4 px-4 font-medium text-black dark:text-white"></th>
               </tr>
             </thead>
-            <tbody>
-              {isLoading ? (
-                <tr className="text-gray-900 font-bold text-center flex justify-center">
-                  <td>Loading...</td>
-                </tr>
-              ) : bookingData.length === 0 ? (
-                <tr className="text-gray-500 text-lg mt-5 flex justify-center">
-                  <td>No bookings</td>
-                </tr>
-              ) : (
-                bookingData.slice(0, visibleBookings).map((booking) => (
-                  <tr key={booking.id}>
-                    <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
-                      <h5 className="font-medium text-black dark:text-white">
-                        {booking.carBrand}
-                      </h5>
-                      <p className="text-sm font-medium">{booking.carModel}, ({booking.carYear})</p>
-                      <p className="text-sm">{booking.vehicleType}</p>
-                    </td>
-                    <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <h5 className="font-medium text-black dark:text-white">
-                        {booking.lga}
-                      </h5>
-                      <p className="text-sm">{booking.ngState}</p>
-                    </td>
-                    <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <h5 className="font-medium text-black dark:text-white">
-                        {booking.phoneNumber}
-                      </h5>
-                      <p className="text-sm font-medium">{booking.name}</p>
-                      <p className="font-thin text-sm">{booking.email}</p>
-                    </td>
-                    <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <p className="text-black text-md dark:text-white">
-                        {formatDateTime(booking.date)}
-                      </p>
-                    </td>
-                    <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      {booking.completeStatus === 'Completed' ? (
-                        <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                          Completed
-                        </p>
-                      ) : (
-                        <p className="inline-flex rounded-full bg-warning bg-opacity-10 py-1 px-3 text-sm font-medium text-warning">
-                          Pending
-                        </p>
-                      )}
-                    </td>
-                    <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <div className="flex items-center space-x-3.5">
-                        <td className="py-5 px-4 dark:border-strokedark">
-                          <div className="flex items-center space-x-3.5">
-                            <button
-                              title="Cancel Booking"
-                              className="hover:text-danger"
-                              onClick={() => {
-                                setSelectedBookingId(booking.id);
-                                setCancelModalOpen(true);
-                              }}
-                            >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="18"
-                                height="18"
-                                fill="currentColor"
-                                className="bi bi-x-circle"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                              </svg>
-                            </button>
-                            <button
-                              title="Complete Booking"
-                              className="hover:text-success"
-                              onClick={() => {
-                                setSelectedBookingId(booking.id);
-                                setApproveModalOpen(true);
-                              }}
-                            >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="18"
-                                height="18"
-                                fill="currentColor"
-                                className="bi bi-check-circle"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </div>
-                    </td>
+              <tbody>
+                {isLoading ? (
+                  <tr className="text-gray-900 font-bold text-center flex justify-center">
+                    <td>Loading...</td>
                   </tr>
-                ))
-              )}
-            </tbody>
+                ) : bookingData.length === 0 ? (
+                  <tr className="text-gray-500 text-lg mt-5 flex justify-center">
+                    <td>No bookings</td>
+                  </tr>
+                ) : (
+                  bookingData.slice(0, visibleBookings).map((booking) => (
+                    <tr key={booking.id}>
+                      <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
+                        <h5 className="font-medium text-black dark:text-white">
+                          {booking.carBrand}
+                        </h5>
+                        <p className="text-sm font-medium">
+                          {booking.carModel}, ({booking.carYear})
+                        </p>
+                        <p className="text-sm">{booking.vehicleType}</p>
+                      </td>
+                      <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                        <h5 className="font-medium text-black dark:text-white">
+                          {booking.lga}
+                        </h5>
+                        <p className="text-sm">{booking.ngState}</p>
+                      </td>
+                      <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                        <h5 className="font-medium text-black dark:text-white">
+                          {booking.phoneNumber}
+                        </h5>
+                        <p className="text-sm font-medium">{booking.name}</p>
+                        <p className="font-thin text-sm">{booking.email}</p>
+                      </td>
+                      <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                        <p className="text-black text-md dark:text-white">
+                          {formatDateTime(booking.date)}
+                        </p>
+                      </td>
+                      <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                        {booking.completeStatus === 'Completed' ? (
+                          <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
+                            Completed
+                          </p>
+                        ) : (
+                          <p className="inline-flex rounded-full bg-warning bg-opacity-10 py-1 px-3 text-sm font-medium text-warning">
+                            Pending
+                          </p>
+                        )}
+                      </td>
+                      <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                        <div className="flex items-center space-x-3.5">
+                          <td className="py-5 px-4 dark:border-strokedark">
+                            <div className="flex items-center space-x-3.5">
+                              <button
+                                title="Cancel Booking"
+                                className="hover:text-danger"
+                                onClick={() => {
+                                  setSelectedBookingId(booking.id);
+                                  setCancelModalOpen(true);
+                                }}
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="18"
+                                  height="18"
+                                  fill="currentColor"
+                                  className="bi bi-x-circle"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                              </button>
+                              <button
+                                title="Complete Booking"
+                                className="hover:text-success"
+                                onClick={() => {
+                                  setSelectedBookingId(booking.id);
+                                  setApproveModalOpen(true);
+                                }}
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="18"
+                                  height="18"
+                                  fill="currentColor"
+                                  className="bi bi-check-circle"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                  <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                                </svg>
+                              </button>
+                            </div>
+                          </td>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
           </table>
           <div className="text-center py-5 text-primary">
-          <Link to={'/admin/orders'}>See All</Link>
-        </div>
+            <Link to={'/admin/orders'}>See All</Link>
+          </div>
         </div>
       </div>
     </>
