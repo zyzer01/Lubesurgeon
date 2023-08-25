@@ -50,7 +50,7 @@ export default function MyModal({
             <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
               <Dialog.Title
                 as="h3"
-                className="text-lg font-medium leading-6 text-black dark:text-white"
+                className="text-lg font-medium leading-6 text-black"
               >
                 {actionText}
               </Dialog.Title>
@@ -59,7 +59,6 @@ export default function MyModal({
                   {actionSub}
                 </p>
               </div>
-
               <div className="mt-4">
                 <button
                   type="button"

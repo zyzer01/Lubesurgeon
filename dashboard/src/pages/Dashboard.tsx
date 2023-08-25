@@ -7,12 +7,11 @@ import { supabase } from '../config/supabaseClient';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
-
   const [visibleVehicles, setVisibleVehicles] = useState(2);
   const [isLoading, setIsLoading] = useState(true);
   const [vehicles, setVehicles] = useState<
-  { id: number; carBrand: string; vin: string }[]
->([]);
+    { id: number; carBrand: string; vin: string }[]
+  >([]);
 
   useEffect(() => {
     // Fetch data from Supabase and update the vehicles state
@@ -34,17 +33,19 @@ const Dashboard = () => {
     fetchVehicles();
   }, []);
 
-
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-2 2xl:gap-7.5">
-      {isLoading ? (
+        {isLoading ? (
           <p className="text-gray-900 font-bold item-center text-center col-span-12">
             Loading...
           </p>
         ) : vehicles.length === 0 ? (
           <p className="text-gray-500 text-center col-span-12 mt-5">
-            No vehicles added. <span className='text-warning'><Link to={"/vehicles"}> Add Vehicle</Link></span> 
+            No vehicles added.{' '}
+            <span className="text-warning">
+              <Link to={'/vehicles'}> Add Vehicle</Link>
+            </span>
           </p>
         ) : (
           vehicles.slice(0, visibleVehicles).map((vehicle, index) => (
@@ -60,15 +61,13 @@ const Dashboard = () => {
       </div>
       {vehicles.length > visibleVehicles && (
         <div className="flex justify-center mt-4">
-          <span className=' text-warning hover:text-gray-700 cursor-pointer'><Link to={"/vehicles"}> See all</Link></span>
+          <span className=" text-warning hover:text-gray-700 cursor-pointer">
+            <Link to={'/vehicles'}> See all</Link>
+          </span>
         </div>
       )}
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
         <DashboardBooking />
-        <ChatCard />
-          <div className="col-span-12 xl:col-span-8">
-            <TableOne />
-          </div>
       </div>
     </>
   );

@@ -1,38 +1,32 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../config/supabaseClient';
+import { Link } from 'react-router-dom';
 
 interface Booking {
   id: number;
   carBrand: string;
   carModel: string;
   lga: string;
-  paymentStatus: string;
+  completeStatus: string;
   date: string;
+  service: string;
   // ... other properties
 }
 
 const DashboardBooking = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [orderBy, setOrderBy] = useState('created_at');
   const [bookingData, setBookingData] = useState<Booking[]>([]);
-  const [visibleBookings, setVisibleBookings] = useState(2);
-
-  const [showAll, setShowAll] = useState(false); // Whether to show all vehicles
-
-  const handleShowMore = () => {
-    setVisibleBookings(bookingData.length); // Show all vehicles
-    setShowAll(true);
-  };
-
-  const handleHide = () => {
-    setVisibleBookings(2); // Hide additional vehicles
-    setShowAll(false);
-  };
+  const [visibleBookings, setVisibleBookings] = useState(5);
 
   useEffect(() => {
     const fetchBookingData = async () => {
       setIsLoading(true);
       try {
-        const { data, error } = await supabase.from('bookings').select('*');
+        const { data, error } = await supabase
+          .from('bookings')
+          .select('*')
+          .order(orderBy, { ascending: false });
 
         if (error) {
           console.error('Error fetching data:', error.message);
@@ -47,7 +41,7 @@ const DashboardBooking = () => {
       setIsLoading(false);
     };
     fetchBookingData();
-  }, []);
+  }, [orderBy]);
 
   const formatDateTime = (dateTimeString: string | number | Date) => {
     const options = {
@@ -70,13 +64,22 @@ const DashboardBooking = () => {
           <thead>
             <tr className="bg-gray-2 text-left dark:bg-meta-4">
               <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                Vehicle Name
+                Vehicle
               </th>
               <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
-                Date
+                Service
+              </th>
+              <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
+                Location
               </th>
               <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                 Status
+              </th>
+              <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
+                Date
+              </th>
+              <th className="py-4 px-4 font-medium text-black dark:text-white">
+                Payment
               </th>
             </tr>
           </thead>
@@ -100,13 +103,36 @@ const DashboardBooking = () => {
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <p className="text-black dark:text-white">
-                      {formatDateTime(booking.date)}
+                      {booking.service}
                     </p>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p className="inline-flex rounded-full bg-warning bg-opacity-10 py-1 px-3 text-sm font-medium text-warning">
-                      {/* {booking.paymentStatus} */} Pending
+                    <p className="text-black dark:text-white">{booking.lga}</p>
+                  </td>
+                  <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                    {booking.completeStatus === 'Completed' ? (
+                      <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
+                        Completed
+                      </p>
+                    ) : (
+                      <p className="inline-flex rounded-full bg-warning bg-opacity-10 py-1 px-3 text-sm font-medium text-warning">
+                        Pending
+                      </p>
+                    )}
+                  </td>
+                  <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                    <p className="text-black dark:text-white">
+                      {formatDateTime(booking.date)}
                     </p>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      className="bg:meta-3 text-meta-3 rounded-md border border-success px-4 py-2 text-sm font-medium hover:text-white hover:bg-success focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75"
+                      // onClick={onActionClick}
+                    >
+                      Pay now
+                    </button>
                   </td>
                 </tr>
               ))
@@ -114,11 +140,7 @@ const DashboardBooking = () => {
           </tbody>
         </table>
         <div className="text-center py-5 text-primary">
-          {showAll ? (
-            <button onClick={handleHide}>Hide</button>
-          ) : (
-            <button onClick={handleShowMore}>Show All</button>
-          )}
+          <Link to={'/bookings'}>See All</Link>
         </div>
       </div>
     </div>

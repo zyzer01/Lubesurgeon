@@ -1,7 +1,9 @@
-import { Fragment, useState, useEffect } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
+import { useState, useEffect } from 'react';
 import { supabase } from '../config/supabaseClient';
 import MyModal from './Modal';
+import { Link } from 'react-router-dom';
+import { Transition } from '@headlessui/react';
+
 
 interface Booking {
   id: number;
@@ -10,11 +12,12 @@ interface Booking {
   carYear: string;
   lga: string;
   ngState: string;
-  paymentStatus: string;
+  completeStatus: string;
   date: string;
   service: string;
   email: string;
   phoneNumber: number;
+  name: string;
   vehicleType: number;
   // ... other properties
 }
@@ -22,17 +25,13 @@ interface Booking {
 const AdminBooking = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [bookingData, setBookingData] = useState<Booking[]>([]);
-  const [approveModalOpen, setApproveModalOpen] = useState(false); // State for Approve modal
-  const [cancelModalOpen, setCancelModalOpen] = useState(false); // State for Cancel modal
-  const [selectedBookingId, setSelectedBookingId] = useState<number | null>(null); // Store selected booking ID
-
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-  function openModal() {
-    setIsOpen(true);
-  }
+  const [approveModalOpen, setApproveModalOpen] = useState(false);
+  const [cancelModalOpen, setCancelModalOpen] = useState(false);
+  const [orderBy, setOrderBy] = useState('created_at');
+  const [visibleBookings, setVisibleBookings] = useState(5);
+  const [selectedBookingId, setSelectedBookingId] = useState<number | null>(
+    null,
+  ); // Store selected booking ID
 
   // Function to handle bookings deletion
   const handleDelete = async (bookingId: number) => {
@@ -65,7 +64,10 @@ const AdminBooking = () => {
     const fetchBookingData = async () => {
       setIsLoading(true);
       try {
-        const { data, error } = await supabase.from('bookings').select('*');
+        const { data, error } = await supabase
+          .from('bookings')
+          .select('*')
+          .order(orderBy, { ascending: false });
 
         if (error) {
           console.error('Error fetching data:', error.message);
@@ -80,7 +82,33 @@ const AdminBooking = () => {
       setIsLoading(false);
     };
     fetchBookingData();
-  }, []);
+  }, [orderBy]);
+
+  // Function to handle service completion
+  const handleComplete = async (bookingId: number) => {
+    setIsLoading(true);
+    try {
+      // Update the booking status to "Approved" in the database
+      await supabase
+        .from('bookings')
+        .update({ completeStatus: 'Completed' })
+        .eq('id', bookingId);
+
+      // Update the status in the state
+      setBookingData((prevData) =>
+        prevData.map((booking) =>
+          booking.id === bookingId
+            ? { ...booking, completeStatus: 'Completed' }
+            : booking,
+        ),
+      );
+    } catch (error) {
+      console.error('Error updating booking status:', (error as Error).message);
+      // Handle the error
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const formatDateTime = (dateTimeString: string | number | Date) => {
     const options = {
@@ -95,18 +123,20 @@ const AdminBooking = () => {
 
   return (
     <>
-     <MyModal
+      <MyModal
         isOpen={approveModalOpen}
         closeModal={() => setApproveModalOpen(false)}
-        actionText="Approve Booking"
-        actionSub="This action is irreversible. Are you sure you want to approve this appointment?"
+        actionText="Complete Booking"
+        actionSub="This action is irreversible. Are you sure you want to mark this appointment as complete?"
         onActionClick={() => {
-          // Perform your approve logic here
+          if (selectedBookingId !== null) {
+            handleComplete(selectedBookingId);
+          }
           setApproveModalOpen(false);
+          setSelectedBookingId(null);
         }}
         buttonColor="bg-success"
       />
-{/* handleDelete(booking.id) */}
       {/* Cancel Modal */}
       <MyModal
         isOpen={cancelModalOpen}
@@ -158,13 +188,14 @@ const AdminBooking = () => {
                   <td>No bookings</td>
                 </tr>
               ) : (
-                bookingData.map((booking) => (
+                bookingData.slice(0, visibleBookings).map((booking) => (
                   <tr key={booking.id}>
                     <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                       <h5 className="font-medium text-black dark:text-white">
                         {booking.carBrand}
                       </h5>
-                      <p className="text-sm font-medium">{booking.carModel}</p>
+                      <p className="text-sm font-medium">{booking.carModel}, ({booking.carYear})</p>
+                      <p className="text-sm">{booking.vehicleType}</p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <h5 className="font-medium text-black dark:text-white">
@@ -175,18 +206,25 @@ const AdminBooking = () => {
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <h5 className="font-medium text-black dark:text-white">
                         {booking.phoneNumber}
-                        <p className="font-thin text-sm">{booking.email}</p>
                       </h5>
+                      <p className="text-sm font-medium">{booking.name}</p>
+                      <p className="font-thin text-sm">{booking.email}</p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <p className="text-black dark:text-white">
+                      <p className="text-black text-md dark:text-white">
                         {formatDateTime(booking.date)}
                       </p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <p className="inline-flex rounded-full bg-warning bg-opacity-10 py-1 px-3 text-sm font-medium text-warning">
-                        {/* {booking.paymentStatus} */} Pending
-                      </p>
+                      {booking.completeStatus === 'Completed' ? (
+                        <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
+                          Completed
+                        </p>
+                      ) : (
+                        <p className="inline-flex rounded-full bg-warning bg-opacity-10 py-1 px-3 text-sm font-medium text-warning">
+                          Pending
+                        </p>
+                      )}
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <div className="flex items-center space-x-3.5">
@@ -213,7 +251,7 @@ const AdminBooking = () => {
                               </svg>
                             </button>
                             <button
-                              title="Approve Booking"
+                              title="Complete Booking"
                               className="hover:text-success"
                               onClick={() => {
                                 setSelectedBookingId(booking.id);
@@ -241,6 +279,9 @@ const AdminBooking = () => {
               )}
             </tbody>
           </table>
+          <div className="text-center py-5 text-primary">
+          <Link to={'/admin/orders'}>See All</Link>
+        </div>
         </div>
       </div>
     </>

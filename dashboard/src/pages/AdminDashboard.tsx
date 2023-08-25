@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AdminBooking from '../components/AdminBooking';
 import { supabase } from '../config/supabaseClient';
 import UserCard from '../components/UserCard';
@@ -6,32 +7,23 @@ import UserIcon from '../images/icon/UserIcon';
 import OrderIcon from '../images/icon/OrderIcon';
 import SaleIcon from '../images/icon/SaleIcon';
 
-const AdminDashboard = () => {
-  const [visibleVehicles, setVisibleVehicles] = useState(2);
-  const [isLoading, setIsLoading] = useState(true);
-  const [vehicles, setVehicles] = useState<
-    { id: number; carBrand: string; vin: string }[]
-  >([]);
 
-  useEffect(() => {
-    // Fetch data from Supabase and update the vehicles state
-    const fetchVehicles = async () => {
-      setIsLoading(true);
-      try {
-        const { data, error } = await supabase.from('vehicles').select('*');
-        // .eq('user_id', user.id);
-        if (error) {
-          console.error('Error fetching data:', error.message);
-        } else {
-          setVehicles(data);
+const AdminDashboard = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
+
+    // Authentication Check
+    useEffect(() => {
+      const checkUserAuthentication = async () => {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+          navigate('/admin/auth/signin');
         }
-      } catch (error) {
-        console.error('Error fetching data:', (error as Error).message);
-      }
-      setIsLoading(false);
-    };
-    fetchVehicles();
-  }, []);
+      };
+      checkUserAuthentication();
+    }, [navigate]);
+
 
   return (
     <>

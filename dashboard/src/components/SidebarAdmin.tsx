@@ -237,7 +237,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarAdminProps) => {
             <ul className="mb-6 flex flex-col gap-1.5">
               {/* <!-- Menu Item Logout --> */}
               <li>
+                {/* <NavLink to={'/admin/signin'}> */}
                 <LogoutButton />
+                {/* </NavLink> */}
               </li>
               {/* <!-- Menu Item Logout --> */}
             </ul>

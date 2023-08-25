@@ -1,8 +1,8 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-
 import Dashboard from './pages/Dashboard';
+import AdminSignIn from './pages/Authentication/AdminSignIn';
 import SignIn from './pages/Authentication/SignIn';
 import SignUp from './pages/Authentication/SignUp';
 import Loader from './common/Loader';
@@ -45,10 +45,11 @@ function App() {
                 <Suspense fallback={<Loader />}>
                   <Component session={undefined} />
                 </Suspense>
-              }
+              }   
             />
           ))}
         </Route>
+        <Route path="/admin/auth/signin" element={<AdminSignIn />} /> 
         <Route path="/admin" element={<AdminLayout />} >
           <Route index element={<AdminDashboard />} />
           <Route path="orders" element={<AdminOrders />} />
