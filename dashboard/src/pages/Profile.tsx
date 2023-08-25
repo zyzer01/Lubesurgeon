@@ -11,6 +11,7 @@ const Profile = ({ session }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [fullName, setFullName] = useState(null)
   const [phoneNumber, setPhoneNumber] = useState(null)
+  const [email, setEmail] = useState(null)
   const [vehicleCount, setVehicleCount] = useState(0);
   const [appointmentCount, setAppointmentCount] = useState(0);
 
@@ -21,7 +22,9 @@ const Profile = ({ session }) => {
       const metadata = user.user_metadata
       
       setFullName(metadata.full_name);
-      setPhoneNumber(metadata.phone);  
+      setPhoneNumber(metadata.phone); 
+      setEmail(user.email)
+      
 
       setIsLoading(false)   
       
@@ -134,7 +137,8 @@ const Profile = ({ session }) => {
               <h3 className="mb-1.5 text-2xl font-semibold text-black dark:text-white">
               {fullName}
             </h3>
-            <p className="font-medium">{phoneNumber}</p>
+            <p className="font-medium mb-2">{phoneNumber}</p>
+            <p className="font-sm">{email}</p>
             </>
             )}          
             <div className="mx-auto mt-4.5 mb-5.5 grid max-w-94 grid-cols-2 rounded-md border border-stroke py-2.5 shadow-1 dark:border-strokedark dark:bg-[#37404F]">

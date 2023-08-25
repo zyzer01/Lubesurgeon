@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../config/supabaseClient';
-import UserOne from '../images/user/user-01.png';
+import Userx from '../images/user/userx.png';
 import { Session } from '@supabase/supabase-js';
 
 interface DropdownUserProps {
@@ -15,6 +15,8 @@ const DropdownUser: React.FC<DropdownUserProps> = ({ session }) => {
   const dropdown = useRef<any>(null);
 
   const [email, setEmail] = useState(null)
+  const [fullName, setFullName] = useState(null)
+  
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }: MouseEvent) => {
@@ -43,27 +45,15 @@ const DropdownUser: React.FC<DropdownUserProps> = ({ session }) => {
 
   useEffect(() => {
     async function getProfile() {
-      if (session && session.user) { // Add a null check
-        const { user } = session;
-  
-        let { data, error } = await supabase
-          .from('profiles')
-          .select(`username, email`)
-          .eq('id', user.id)
-          .single();
-  
-        if (error) {
-          console.warn(error);
-        } else if (data) {
-          setEmail(data.email);
-          console.log(data);
-          
-        }
-      }
+      const { data: { user } } = await supabase.auth.getUser()
+      const metadata = user.user_metadata
+      
+      setFullName(metadata.full_name);
+      setEmail(user.email);
     }
   
     getProfile();
-  }, [session]);
+  }, []);
   
 
   return (
@@ -76,13 +66,13 @@ const DropdownUser: React.FC<DropdownUserProps> = ({ session }) => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            {email}
+            {fullName}
           </span>
-          <span className="block text-xs">Lubesurgist</span>
+          <span className="block text-xs">{email}</span>
         </span>
 
         <span className="h-12 w-12 rounded-full">
-          <img src={UserOne} alt="User" />
+          <img src={Userx} alt="User" />
         </span>
 
         <svg
