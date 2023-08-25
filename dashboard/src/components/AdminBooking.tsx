@@ -81,14 +81,14 @@ const AdminBooking = () => {
       }
       setIsLoading(false);
     };
-    fetchBookingData();
+    fetchBookingData();  
   }, [orderBy]);
 
   // Function to handle service completion
   const handleComplete = async (bookingId: number) => {
     setIsLoading(true);
     try {
-      // Update the booking status to "Approved" in the database
+      // Update the booking status to "Complete" in the database
       await supabase
         .from('bookings')
         .update({ completeStatus: 'Completed' })
