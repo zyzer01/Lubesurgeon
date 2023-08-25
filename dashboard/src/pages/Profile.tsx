@@ -3,6 +3,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import cover from '../images/user/cover.jpg';
 import userx from '../images/user/userx.png';
 import { supabase } from '../config/supabaseClient';
+import Roller from '../components/Roller';
 
 
 const Profile = ({ session }) => {
