@@ -56,6 +56,8 @@ const DropdownUser: React.FC<DropdownUserProps> = ({ session }) => {
           console.warn(error);
         } else if (data) {
           setEmail(data.email);
+          console.log(data);
+          
         }
       }
     }

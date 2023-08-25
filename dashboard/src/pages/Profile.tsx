@@ -7,26 +7,16 @@ import { supabase } from '../config/supabaseClient';
 
 const Profile = ({ session }) => {
 
-  const [full_name, setFull_name] = useState(null)
+  const [fullName, setFullName] = useState(null)
+  const [phoneNumber, setPhoneNumber] = useState(null)
 
   useEffect(() => {
     async function getProfile() {
-      // setLoading(true)
-      const { user } = session
-
-      let { data, error } = await supabase
-        .from('profiles')
-        .select(`full_name`)
-        .eq('id', user.id)
-        .single()
-
-      if (error) {
-        console.warn(error)
-      } else if (data) {
-        setFull_name(data.full_name)
-      }
-
-      // setLoading(false)
+      const { data: { user } } = await supabase.auth.getUser()
+      const metadata = user.user_metadata
+      
+      setFullName(metadata.full_name);
+      setPhoneNumber(metadata.phone);      
     }
 
     getProfile()
@@ -116,9 +106,9 @@ const Profile = ({ session }) => {
           </div>
           <div className="mt-4">
             <h3 className="mb-1.5 text-2xl font-semibold text-black dark:text-white">
-              {full_name}
+              {fullName}
             </h3>
-            <p className="font-medium">Ui/Ux Designer</p>
+            <p className="font-medium">{phoneNumber}</p>
             <div className="mx-auto mt-4.5 mb-5.5 grid max-w-94 grid-cols-3 rounded-md border border-stroke py-2.5 shadow-1 dark:border-strokedark dark:bg-[#37404F]">
               <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                 <span className="font-semibold text-black dark:text-white">

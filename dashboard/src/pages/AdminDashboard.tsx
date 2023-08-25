@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AdminBooking from '../components/AdminBooking';
 import { supabase } from '../config/supabaseClient';
@@ -9,7 +9,6 @@ import SaleIcon from '../images/icon/SaleIcon';
 
 
 const AdminDashboard = () => {
-  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
 

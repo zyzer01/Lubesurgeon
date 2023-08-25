@@ -123,18 +123,16 @@ const SignUp: React.FC = () => {
       try {
         setIsLoading(true);
 
-        const { data, error } = await supabase.auth.signUp(
-          {
+        const { data, error } = await supabase.auth.signUp({
           email: signFormData.email,
           password: signFormData.password,
           options: {
             data: {
               full_name: signFormData.name,
               phone: signFormData.tel,
-            }
-          }
-        }
-        );
+            },
+          },
+        });
 
         if (error) {
           console.error('Login error:', error.message);
@@ -307,7 +305,7 @@ const SignUp: React.FC = () => {
                   </label>
                   <div className="relative">
                     <input
-className={`${
+                      className={`${
                         errors.name ? 'border-danger' : 'border-gray-300'
                       } w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary`}
                       name="name"
@@ -317,7 +315,7 @@ className={`${
                       onBlur={() => handleBlur('name')}
                       onChange={handleChange}
                     />
-{errors.name && (
+                    {errors.name && (
                       <p className="text-danger text-sm italic">
                         {errors.name}
                       </p>
@@ -352,7 +350,7 @@ className={`${
                   </label>
                   <div className="relative">
                     <input
-className={`${
+                      className={`${
                         errors.email ? 'border-danger' : 'border-gray-300'
                       } w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary`}
                       name="email"
@@ -362,7 +360,7 @@ className={`${
                       onBlur={() => handleBlur('email')}
                       onChange={handleChange}
                     />
-{errors.email && (
+                    {errors.email && (
                       <p className="text-danger text-sm italic">
                         {errors.email}
                       </p>
@@ -403,7 +401,7 @@ className={`${
                       onBlur={() => handleBlur('tel')}
                       onChange={handleChange}
                     />
-{errors.tel && (
+                    {errors.tel && (
                       <p className="text-danger text-sm italic">{errors.tel}</p>
                     )}
                     <span className="absolute right-4 top-4">
@@ -428,7 +426,7 @@ className={`${
                     Password
                   </label>
                   <div className="relative">
-<button
+                    <button
                       type="button"
                       className="absolute right-0 -mt-6 mr-3"
                       onClick={togglePasswordVisibility}
@@ -461,7 +459,7 @@ className={`${
                       )}
                     </button>
                     <input
-className={`${
+                      className={`${
                         errors.password ? 'border-danger' : 'border-gray-300'
                       } w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary`}
                       name="password"
@@ -471,7 +469,7 @@ className={`${
                       onBlur={() => handleBlur('password')}
                       onChange={handleChange}
                     />
-{errors.password && (
+                    {errors.password && (
                       <p className="text-danger text-sm italic">
                         {errors.password}
                       </p>
@@ -503,7 +501,7 @@ className={`${
                 <div className="mb-5">
                   <button
                     type="submit"
-                                        className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
+                    className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
                   >
                     {isLoading ? 'Loading...' : 'Create account'}
                   </button>
