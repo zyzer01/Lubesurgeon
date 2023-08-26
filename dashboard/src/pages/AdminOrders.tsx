@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../config/supabaseClient';
 import MyModal from '../../src/components/Modal';
 import { Link } from 'react-router-dom';
+import Roller from '../components/Roller';
+
 
 interface Booking {
   id: number;
@@ -193,9 +195,7 @@ const AdminOrders = () => {
             </thead>
             <tbody>
               {isLoading ? (
-                <tr className="text-gray-900 font-bold text-center flex justify-center">
-                  <td>Loading...</td>
-                </tr>
+                <tr><td><Roller /></td></tr>
               ) : bookingData.length === 0 ? (
                 <tr className="text-gray-500 text-lg mt-5 flex justify-center">
                   <td>No bookings</td>

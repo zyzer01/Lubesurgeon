@@ -4,6 +4,7 @@ import Vehicle from '../components/Vehicle';
 import carData from '../../public/data/carData.json';
 import {supabase} from '../config/supabaseClient';
 import { User } from '@supabase/supabase-js';
+import Roller from '../components/Roller';
 
 const Vehicles = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -279,7 +280,7 @@ const Vehicles = () => {
       <div className="grid grid-cols md:grid-cols-3 gap-x-8 gap-y-8">
         {isLoading ? (
           <p className="text-gray-900 font-bold item-center text-center col-span-12">
-            Loading...
+            <Roller />
           </p>
         ) : vehicles.length === 0 ? (
           <p className="text-gray-500 text-center col-span-12 mt-5">

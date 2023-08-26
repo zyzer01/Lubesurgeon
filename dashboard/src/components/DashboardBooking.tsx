@@ -6,6 +6,7 @@ interface Booking {
   id: number;
   carBrand: string;
   carModel: string;
+  carYear: number;
   lga: string;
   completeStatus: string;
   date: string;
@@ -99,7 +100,7 @@ const DashboardBooking = () => {
                     <h5 className="font-medium text-black dark:text-white">
                       {booking.carBrand}
                     </h5>
-                    <p className="text-sm">{booking.carModel}</p>
+                    <p className="text-sm">{booking.carModel}, ({booking.carYear})</p>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <p className="text-black dark:text-white">

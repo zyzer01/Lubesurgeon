@@ -3,6 +3,7 @@ import DashboardBooking from '../components/DashboardBooking';
 import Vehicle from '../components/Vehicle';
 import { supabase } from '../config/supabaseClient';
 import { Link } from 'react-router-dom';
+import Roller from '../components/Roller';
 
 const Dashboard = () => {
   const [visibleVehicles, setVisibleVehicles] = useState(2);
@@ -36,7 +37,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-2 2xl:gap-7.5">
         {isLoading ? (
           <p className="text-gray-900 font-bold item-center text-center col-span-12">
-            Loading...
+            <Roller />
           </p>
         ) : vehicles.length === 0 ? (
           <p className="text-gray-500 text-center col-span-12 mt-5">
