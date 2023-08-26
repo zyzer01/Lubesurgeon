@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Header from '../components/Header';
+import AdminHeader from '../components/AdminHeader';
 import SidebarAdmin from '../components/SidebarAdmin';
 import { Outlet } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ const AdminLayout = () => {
         {/* <!-- ===== Content Area Start ===== --> */}
         <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
           {/* <!-- ===== Header Start ===== --> */}
-          <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+          <AdminHeader sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
           {/* <!-- ===== Header End ===== --> */}
 
           {/* <!-- ===== Main Content Start ===== --> */}
