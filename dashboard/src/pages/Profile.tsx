@@ -6,7 +6,7 @@ import { supabase } from '../config/supabaseClient';
 import Roller from '../components/Roller';
 
 
-const Profile = ({ session }) => {
+const Profile = () => {
 
   const [isLoading, setIsLoading] = useState(false)
   const [fullName, setFullName] = useState(null)
@@ -47,7 +47,7 @@ const Profile = ({ session }) => {
       }
     }
     getProfile()
-  }, [session])
+  }, [])
 
   return (
     <>

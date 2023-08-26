@@ -1,7 +1,7 @@
 import Breadcrumb from '../components/Breadcrumb';
 import Sale from './AdminSales';
 import ChartTwo from '../components/ChartTwo';
-import TableOne from '../components/TableOne';
+import TableOne from '../components/UsersTable';
 
 const History = () => {
   return (
