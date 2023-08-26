@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import DashboardBooking from '../components/DashboardBooking';
-import ChatCard from '../components/ChatCard';
-import TableOne from '../components/UsersTable';
 import Vehicle from '../components/Vehicle';
 import { supabase } from '../config/supabaseClient';
 import { Link } from 'react-router-dom';
