@@ -50,9 +50,22 @@ function CarForm() {
 
   const [errors, setErrors] = useState({});
 
+  const servicePrices = {
+    "Car Wash": 2000,
+    "Oil Change": 5000,
+  };
+  
+
   const handleBookingChange = (e) => {
     const { name, value } = e.target;
-    setBookingFormData((prevData) => ({ ...prevData, [name]: value }));
+    const updatedFormData = { ...bookingFormData, [name]: value };
+  
+    if (name === 'service') {
+      updatedFormData.servicePrice = servicePrices[value]; // Include the service price in the updated data
+    }
+    
+    setBookingFormData(updatedFormData);
+  
   };
 
   //Remove Error when cursor is removed
@@ -124,9 +137,10 @@ function CarForm() {
       // Handle form submission here
       setIsLoading(true);
       try {
+        const servicePrice = servicePrices[bookingFormData.service];
         const { data, error } = await supabase
           .from("bookings")
-          .insert([bookingFormData]);
+          .insert([{ ...bookingFormData, servicePrice }]);
 
         if (error) {
           console.error("Error inserting data:", error.message);
@@ -617,6 +631,7 @@ function CarForm() {
             <button
               className="inline-flex items-center bg-balablue border-2 border-balablue py-2 px-12 focus:outline-none hover:bg-white hover:text-balablue hover:border-2 hover:border-balablue transition-all rounded-lg text-white mt-4 md:mt-0"
               type="submit"
+              disabled={isLoading}
             >
               {isLoading ? "Booking..." : "Book now"}
             </button>

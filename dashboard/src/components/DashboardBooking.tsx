@@ -11,6 +11,7 @@ interface Booking {
   completeStatus: string;
   date: string;
   service: string;
+  servicePrice: number;
   // ... other properties
 }
 
@@ -54,6 +55,7 @@ const DashboardBooking = () => {
     };
     return new Date(dateTimeString).toLocaleDateString('en-US', options);
   };
+
 
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
@@ -105,6 +107,9 @@ const DashboardBooking = () => {
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <p className="text-black dark:text-white">
                       {booking.service}
+                    </p>
+                    <p className="text-success text-sm font-medium">
+                      {Number(booking.servicePrice).toLocaleString('en-US', { style: 'currency', currency: 'NGN' })}
                     </p>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
