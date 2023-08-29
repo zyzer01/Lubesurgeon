@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -43,6 +43,7 @@ module.exports = {
       'meta-9': '#E5E7EB',
       success: '#219653',
       balablue: '#3b82f6',
+      bulaba: '#0c1325',
       danger: '#D34053',
       warning: '#FFA70B',
     },
@@ -252,4 +253,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

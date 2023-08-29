@@ -11,6 +11,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import AdminUsers from './pages/AdminUsers';
 import AdminOrders from './pages/AdminOrders';
 import AdminSale from './pages/AdminSales';
+import Book from './pages/Book';
 
 const DefaultLayout = lazy(() => import('./layout/DefaultLayout'));
 const AdminLayout = lazy(() => import('./layout/AdminLayout'));
@@ -33,6 +34,7 @@ function App() {
       />
 
       <Routes>
+        <Route path="/book" element={<Book />} />
         <Route path="/auth/signin" element={<SignIn />} />
         <Route path="/auth/signup" element={<SignUp />} />
         <Route element={<DefaultLayout />}>
@@ -45,12 +47,12 @@ function App() {
                 <Suspense fallback={<Loader />}>
                   <Component session={undefined} />
                 </Suspense>
-              }   
+              }
             />
           ))}
         </Route>
-        <Route path="/admin/auth/signin" element={<AdminSignIn />} /> 
-        <Route path="/admin" element={<AdminLayout />} >
+        <Route path="/admin/auth/signin" element={<AdminSignIn />} />
+        <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<AdminDashboard />} />
           <Route path="orders" element={<AdminOrders />} />
           <Route path="users" element={<AdminUsers />} />
