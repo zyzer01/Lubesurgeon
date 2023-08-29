@@ -17,8 +17,13 @@ const Dashboard = () => {
     const fetchVehicles = async () => {
       setIsLoading(true);
       try {
-        const { data, error } = await supabase.from('vehicles').select('*');
-        // .eq('user_id', user.id);
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        const { data, error } = await supabase
+          .from('vehicles')
+          .select('*')
+          .eq('userId', user.id);
         if (error) {
           console.error('Error fetching data:', error.message);
         } else {

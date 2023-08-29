@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect, Fragment, ChangeEvent, FormEvent } from 'react';
 import carData from '../data/carData.json';
 import carYear from '../data/carYear.json';
 import statesData from '../data/statesData';
@@ -23,16 +23,45 @@ const ERROR_MESSAGE = {
   service: 'Service is required',
 };
 
+interface BookingFormData {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  ngState: string;
+  lga: string;
+  date: Date;
+  vehicleType: string;
+  carBrand: string;
+  carModel: string;
+  carYear: string;
+  service: string;
+  servicePrice?: number;
+}
+
+interface ValidationErrors {
+  name?: string;
+  email?: string;
+  phoneNumber?: string;
+  ngState?: string;
+  lga?: string;
+  date?: string;
+  vehicleType?: string;
+  carBrand?: string;
+  carModel?: string;
+  carYear?: string;
+  service?: string;
+}
+
 function CarForm() {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState(''); //Brand and model
   const [selectedModel, setSelectedModel] = useState(''); //Brand and model
-  const [years, setYears] = useState(['']); //car year
+  const [years, setYears] = useState<string[]>([]);
   const [selectedState, setSelectedState] = useState(''); //State and LGA
   const [selectedLga, setSelectedLga] = useState(''); //State and LGA
-  const [bookingFormData, setBookingFormData] = useState({
+  const [bookingFormData, setBookingFormData] = useState<BookingFormData>({
     name: '',
     email: '',
     phoneNumber: '',
@@ -46,14 +75,32 @@ function CarForm() {
     service: '',
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<ValidationErrors>({});
 
-  const servicePrices = {
+  const [userId, setUserId] = useState(null);
+
+  //Fetch Current user
+  useEffect(() => {
+    async function fetchUser() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (user) {
+        setUserId(user.id);
+      }
+    }
+
+    fetchUser();
+  }, []);
+
+  const servicePrices: Record<string, number> = {
     'Car Wash': 2000,
     'Oil Change': 5000,
   };
 
-  const handleBookingChange = (e) => {
+  const handleBookingChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const { name, value } = e.target;
     const updatedFormData = { ...bookingFormData, [name]: value };
 
@@ -81,10 +128,10 @@ function CarForm() {
     return emailRegex.test(email);
   };
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const validationErrors = {};
+    const validationErrors: ValidationErrors = {};
 
     if (!bookingFormData.name) {
       validationErrors.name = 'Name is required';
@@ -123,8 +170,11 @@ function CarForm() {
     if (!bookingFormData.carModel) {
       validationErrors.carModel = 'Car model is required';
     }
+    if (!bookingFormData.carYear) {
+      validationErrors.carYear = 'Car year is required';
+    }
     if (!bookingFormData.service) {
-      validationErrors.carYear = 'Service is required';
+      validationErrors.service = 'Service is required';
     }
 
     setErrors(validationErrors);
@@ -136,7 +186,7 @@ function CarForm() {
         const servicePrice = servicePrices[bookingFormData.service];
         const { data, error } = await supabase
           .from('bookings')
-          .insert([{ ...bookingFormData, servicePrice }]);
+          .insert([{ ...bookingFormData, userId: userId, servicePrice }]);
 
         if (error) {
           console.error('Error inserting data:', error.message);
@@ -150,7 +200,7 @@ function CarForm() {
         console.error('Error inserting data:', error.message);
         // Handle the error
       } finally {
-        setIsLoading(true);
+        setIsLoading(false);
       }
 
       console.log('Form submitted:', bookingFormData);
@@ -178,14 +228,18 @@ function CarForm() {
   );
   const modelOptions = selectedBrandData ? selectedBrandData.models : [];
 
-  const handleBrandChange = (event: { target: { value: any } }) => {
+  const handleBrandChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const brand = event.target.value;
     setSelectedBrand(brand);
     setSelectedModel('');
     handleBookingChange(event);
   };
 
-  const handleModelChange = (event: { target: { value: any } }) => {
+  const handleModelChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const model = event.target.value;
     setSelectedModel(model);
     handleBookingChange(event);
@@ -198,14 +252,18 @@ function CarForm() {
   );
   const lgaOptions = selectedStateData ? selectedStateData.lgas : [];
 
-  const handleStateChange = (event: { target: { value: any } }) => {
+  const handleStateChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const brand = event.target.value;
     setSelectedState(brand);
     setSelectedLga('');
     handleBookingChange(event);
   };
 
-  const handleLgaChange = (event: { target: { value: any } }) => {
+  const handleLgaChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const lgas = event.target.value;
     setSelectedLga(lgas);
     handleBookingChange(event);
@@ -278,7 +336,7 @@ function CarForm() {
           </div>
         </Dialog>
       </Transition>
-      <div className="mx-auto px-4 px-md:px-8 lg:px-24 xl:px-30 bg-white h-screen pt-15">
+      <div className="mx-auto px-4 px-md:px-8 lg:px-24 xl:px-30 bg-white h-screen py-15">
         <div>
           <h1 className="sm:text-4xl text-2xl font-bold title-font py-4 text-bulaba">
             Start your booking
@@ -288,7 +346,7 @@ function CarForm() {
           <h2 className="sm:text-2xl text-xl font-medium title-font mb-2 mt-4 text-form-strokedark">
             What service do you require?
           </h2>
-          <div className="grid grid-cols-3 my-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-6">
             <div>
               <div className="relative flex items-center">
                 <svg
@@ -381,7 +439,7 @@ function CarForm() {
             </div>
 
             <div>
-              <div className="relative flex items-center sm:col-span-2 md:col-span-1">
+              <div className="relative flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -482,7 +540,7 @@ function CarForm() {
               )}
             </div>
             <div>
-              <div className="flex items-center">
+              <div className="flex items-center w-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"

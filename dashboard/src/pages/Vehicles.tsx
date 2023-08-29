@@ -19,6 +19,22 @@ const Vehicles = () => {
     { id: number; carBrand: string; vin: string }[]
   >([]);
 
+  const [userId, setUserId] = useState(null);
+
+  //Fetch Current user
+  useEffect(() => {
+    async function fetchUser() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (user) {
+        setUserId(user.id);
+      }
+    }
+
+    fetchUser();
+  }, []);
+
   const openModal = () => {
     setIsOpen(true);
   };
@@ -40,6 +56,9 @@ const Vehicles = () => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
+    const vinExists = vehicles.some(
+      (vehicle) => vehicle.vin === vehicleFormData.vin,
+    );
     if (!vehicleFormData.carBrand || !vehicleFormData.vin) {
       setFormError('Please fill in all the fields correctly.');
       return;
@@ -47,17 +66,14 @@ const Vehicles = () => {
     if (vehicleFormData.vin.length !== 17) {
       setFormError('Incorrect VIN');
       return;
-    } else {
-      setFormError('');
-      console.log(formError);
     }
-
-    const vinExists = vehicles.some(
-      (vehicle) => vehicle.vin === vehicleFormData.vin,
-    );
     if (vinExists) {
       setFormError('Vehicle with this VIN already exists.');
       return;
+    } else {
+      setFormError('');
+      console.log(formError);
+      // closeModal();
     }
 
     //Adding vehicle to state
@@ -78,21 +94,24 @@ const Vehicles = () => {
       // Handle form submission here
       setIsLoading(true);
       try {
+        const vehicleData = {
+          ...vehicleFormData,
+          userId: userId,
+        };
+
         const { data, error } = await supabase
           .from('vehicles')
-          .insert([vehicleFormData]);
+          .insert([vehicleData]);
 
         if (error) {
           console.error('Error inserting data:', error.message);
-          closeModal();
           // Handle the error
         } else {
           console.log('Data inserted successfully:', data);
+          closeModal();
         }
       } catch (error) {
         console.error('Error inserting data:', (error as Error).message);
-        closeModal();
-
         // Handle the error
       } finally {
         setIsLoading(false);
@@ -134,12 +153,10 @@ const Vehicles = () => {
         const {
           data: { user },
         } = await supabase.auth.getUser();
-        if (user) {
-          console.log('Signed-in user:', user); // Log the signed-in user
-        }
-
-        let { data, error } = await supabase.from('vehicles').select('*');
-        // .eq('user_id', user.id);
+        const { data, error } = await supabase
+          .from('vehicles')
+          .select('*')
+          .eq('userId', user.id);
         if (error) {
           console.error('Error fetching data:', error.message);
         } else {

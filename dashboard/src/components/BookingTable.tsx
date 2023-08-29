@@ -67,10 +67,13 @@ const BookingTable = () => {
     const fetchBookingData = async (bookingId: number) => {
       setIsLoading(true);
       try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
         const { data, error } = await supabase
           .from('bookings')
           .select('*')
-          // .eq('id', bookingId)
+          .eq('userId', user.id)
           .order(orderBy, { ascending: false });
 
         if (error) {

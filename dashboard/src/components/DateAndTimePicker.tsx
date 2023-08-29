@@ -19,16 +19,14 @@ const DateAndTimePicker = () => {
   }
 
   return (
-    <div className="w-full">
-      <DatePicker
-        selected={selectedDate}
-        onChange={handleDateChange}
-        showTimeSelect
-        dateFormat="MMMM d, yyyy h:mm aa"
-        includeTimes={availableTimes}
-        className="w-full placeholder:text-slate-400 placeholder:text-sm bg-white rounded-lg border border-gray-300 focus:border-primary focus:ring-amber-300 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-      />
-    </div>
+    <DatePicker
+      selected={selectedDate}
+      onChange={handleDateChange}
+      showTimeSelect
+      dateFormat="MMMM d, yyyy h:mm aa"
+      includeTimes={availableTimes}
+      className="w-full placeholder:text-slate-400 placeholder:text-sm bg-white rounded-lg border border-gray-300 focus:border-primary focus:ring-amber-300 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+    />
   );
 };
 

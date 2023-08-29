@@ -5,49 +5,46 @@ import userx from '../images/user/userx.png';
 import { supabase } from '../config/supabaseClient';
 import Roller from '../components/Roller';
 
-
 const Profile = () => {
-
-  const [isLoading, setIsLoading] = useState(false)
-  const [fullName, setFullName] = useState(null)
-  const [phoneNumber, setPhoneNumber] = useState(null)
-  const [email, setEmail] = useState(null)
+  const [isLoading, setIsLoading] = useState(false);
+  const [fullName, setFullName] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState(null);
+  const [email, setEmail] = useState(null);
   const [vehicleCount, setVehicleCount] = useState(0);
   const [appointmentCount, setAppointmentCount] = useState(0);
 
   useEffect(() => {
     async function getProfile() {
-      setIsLoading(true)
-      const { data: { user } } = await supabase.auth.getUser()
-      const metadata = user.user_metadata
-      
-      setFullName(metadata.full_name);
-      setPhoneNumber(metadata.phone); 
-      setEmail(user.email)
-      
+      setIsLoading(true);
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const metadata = user.user_metadata;
 
-      setIsLoading(false)   
-      
-        // Fetch the user's vehicles count from Supabase
-        const { data: vehiclesData, error: vehiclesError } = await supabase
+      setFullName(metadata.full_name);
+      setPhoneNumber(metadata.phone);
+      setEmail(user.email);
+
+      setIsLoading(false);
+
+      // Fetch the user's vehicles count from Supabase
+      const { data: vehiclesData, error: vehiclesError } = await supabase
         .from('vehicles')
         .select('id')
-        .eq('user_id', user.id);
+        .eq('userId', user.id);
       if (!vehiclesError) {
         setVehicleCount(vehiclesData.length);
       }
- 
+
       // Fetch the user's appointments count from Supabase
-      const { data: appointmentsData, error: appointmentsError } = await supabase
-        .from('appointments')
-        .select('id')
-        .eq('user_id', user.id);
+      const { data: appointmentsData, error: appointmentsError } =
+        await supabase.from('bookings').select('id').eq('userId', user.id);
       if (!appointmentsError) {
         setAppointmentCount(appointmentsData.length);
       }
     }
-    getProfile()
-  }, [])
+    getProfile();
+  }, []);
 
   return (
     <>
@@ -132,15 +129,17 @@ const Profile = () => {
             </div>
           </div>
           <div className="mt-4">
-            {isLoading ? <Roller /> : (
+            {isLoading ? (
+              <Roller />
+            ) : (
               <>
-              <h3 className="mb-1.5 text-2xl font-semibold text-black dark:text-white">
-              {fullName}
-            </h3>
-            <p className="font-medium mb-2">{phoneNumber}</p>
-            <p className="font-sm">{email}</p>
-            </>
-            )}          
+                <h3 className="mb-1.5 text-2xl font-semibold text-black dark:text-white">
+                  {fullName}
+                </h3>
+                <p className="font-medium mb-2">{phoneNumber}</p>
+                <p className="font-sm">{email}</p>
+              </>
+            )}
             <div className="mx-auto mt-4.5 mb-5.5 grid max-w-94 grid-cols-2 rounded-md border border-stroke py-2.5 shadow-1 dark:border-strokedark dark:bg-[#37404F]">
               <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                 <span className="font-semibold text-black dark:text-white">

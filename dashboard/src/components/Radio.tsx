@@ -1,8 +1,18 @@
 import { RadioGroup } from '@headlessui/react';
 import { SVGProps } from 'react';
-import { JSX } from 'react/jsx-runtime';
 
-const vehicleType = [
+interface Vehicle {
+  name: string;
+}
+
+interface RadioProps {
+  name: string;
+  handleTypeChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  selectedType: string;
+  handleBlur: () => void;
+}
+
+const vehicleType: Vehicle[] = [
   {
     name: 'Sedan',
   },
@@ -19,12 +29,11 @@ export default function Radio({
   handleTypeChange,
   selectedType,
   handleBlur,
-}) {
-  // const [selectedType, setSelectedType] = useState(vehicleType[0])
-
-  const handleTypeSelection = (value: any) => {
+}: RadioProps) {
+  const handleTypeSelection = (value: string) => {
+    // Update the type
     handleTypeChange({ target: { name, value } });
-    console.log(value); // Log only the value
+    console.log(value);
   };
 
   return (
@@ -38,13 +47,12 @@ export default function Radio({
           <div className="grid grid-cols-3 gap-4">
             {vehicleType.map((vehicle) => (
               <RadioGroup.Option
-                name={name}
                 key={vehicle.name}
                 value={vehicle.name}
                 className={({ active, checked }) =>
                   `${
                     !active
-                      ? 'ring-2 ring-white ring-opacity-60 ring-offset-1 ring-offset-amber-400'
+                      ? 'ring-2 ring-white ring-opacity-60 border border-bodydark2 border-dotted ring-offset-1 ring-offset-amber-400'
                       : ''
                   }
                   ${
@@ -87,7 +95,7 @@ export default function Radio({
   );
 }
 
-function CheckIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
+function CheckIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" {...props}>
       <circle cx={12} cy={12} r={12} fill="#fff" opacity="0.2" />
