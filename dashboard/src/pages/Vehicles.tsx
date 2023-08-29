@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import Breadcrumb from '../components/Breadcrumb';
 import Vehicle from '../components/Vehicle';
-import carData from '../../public/data/carData.json';
-import {supabase} from '../config/supabaseClient';
+import carData from '../data/carData.json';
+import { supabase } from '../config/supabaseClient';
 import { User } from '@supabase/supabase-js';
 import Roller from '../components/Roller';
 
@@ -43,7 +43,8 @@ const Vehicles = () => {
     if (!vehicleFormData.carBrand || !vehicleFormData.vin) {
       setFormError('Please fill in all the fields correctly.');
       return;
-    } if (vehicleFormData.vin.length !== 17) {
+    }
+    if (vehicleFormData.vin.length !== 17) {
       setFormError('Incorrect VIN');
       return;
     } else {
@@ -91,7 +92,7 @@ const Vehicles = () => {
       } catch (error) {
         console.error('Error inserting data:', (error as Error).message);
         closeModal();
-  
+
         // Handle the error
       } finally {
         setIsLoading(false);
@@ -99,7 +100,6 @@ const Vehicles = () => {
       }
     }
   };
-
 
   // Function to handle vehicle deletion
   const handleDelete = async (id: number) => {
@@ -112,10 +112,10 @@ const Vehicles = () => {
         // Handle the error
       } else {
         console.log('Vehicle deleted successfully');
-        
+
         // Remove the vehicle from the state
         setVehicles((prevVehicles) =>
-          prevVehicles.filter((vehicle) => vehicle.id !== id)
+          prevVehicles.filter((vehicle) => vehicle.id !== id),
         );
       }
     } catch (error) {
@@ -126,17 +126,18 @@ const Vehicles = () => {
     }
   };
 
-
   useEffect(() => {
     // Fetch data from Supabase and update the vehicles state
     const fetchVehicles = async () => {
       setIsLoading(true);
       try {
-        const { data: { user } } = await supabase.auth.getUser()
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
         if (user) {
           console.log('Signed-in user:', user); // Log the signed-in user
         }
-        
+
         let { data, error } = await supabase.from('vehicles').select('*');
         // .eq('user_id', user.id);
         if (error) {

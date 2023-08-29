@@ -65,7 +65,7 @@ function CarForm() {
   };
 
   //Remove Error when cursor is removed
-  const handleBlur = (e) => {
+  const handleBlur = (e: { target: { name: any } }) => {
     const { name } = e.target;
     if (!bookingFormData[name]) {
       setErrors((prev) => ({ ...prev, [name]: ERROR_MESSAGE[name] }));
@@ -76,12 +76,12 @@ function CarForm() {
   //Remove Error when cursor is removed
 
   // Error Handler Starts
-  const isValidEmail = (email) => {
+  const isValidEmail = (email: string) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailRegex.test(email);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     const validationErrors = {};
@@ -178,14 +178,14 @@ function CarForm() {
   );
   const modelOptions = selectedBrandData ? selectedBrandData.models : [];
 
-  const handleBrandChange = (event) => {
+  const handleBrandChange = (event: { target: { value: any } }) => {
     const brand = event.target.value;
     setSelectedBrand(brand);
     setSelectedModel('');
     handleBookingChange(event);
   };
 
-  const handleModelChange = (event) => {
+  const handleModelChange = (event: { target: { value: any } }) => {
     const model = event.target.value;
     setSelectedModel(model);
     handleBookingChange(event);
@@ -194,18 +194,18 @@ function CarForm() {
 
   //  State and LGA select starts
   const selectedStateData = statesData.find(
-    (state) => state.state === selectedState,
+    (state: { state: string }) => state.state === selectedState,
   );
   const lgaOptions = selectedStateData ? selectedStateData.lgas : [];
 
-  const handleStateChange = (event) => {
+  const handleStateChange = (event: { target: { value: any } }) => {
     const brand = event.target.value;
     setSelectedState(brand);
     setSelectedLga('');
     handleBookingChange(event);
   };
 
-  const handleLgaChange = (event) => {
+  const handleLgaChange = (event: { target: { value: any } }) => {
     const lgas = event.target.value;
     setSelectedLga(lgas);
     handleBookingChange(event);
