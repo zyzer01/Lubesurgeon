@@ -6,11 +6,16 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 const port = process.env.PORT || 3000;
 const axios = require('axios');
+const hbs = require('nodemailer-express-handlebars');
+const path = require('path');
 
 // Middleware to parse JSON and URL-encoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// app.engine('handlebars', exphbs());
+// app.set('view engine', 'handlebars');
 
 const corsOptions = {
   origin: ['http://localhost:5173'],
@@ -42,31 +47,43 @@ app.post('/send-email', async (req, res) => {
       },
     });
 
-    // Compose the email content
+    const handlebarOptions = {
+      viewEngine: {
+        extName: '.handlebars',
+        partialsDir: path.resolve('./views'),
+        defaultLayout: false,
+      },
+      viewPath: path.resolve('./views'),
+      extName: '.handlebars',
+    };
+
+    transporter.use('compile', hbs(handlebarOptions));
+
     const mailOptions = {
       from: '"Lubesurgeons" <test@lubesurgeons.com>',
-      to: email, // Use the provided email from the form input
+      to: email,
       subject: 'Hello ✔',
-      text: `Hey ${name}!`, // Customize the text of the email
-      html: `<b>Hey ${name}!</b>`, // Customize the HTML content of the email
+      template: 'email',
+      context: {
+        title: 'Title Here',
+        text: 'Lorem ipsum dolor sit amet, consectetur...',
+      },
     };
     // Send the email
     const info = await transporter.sendMail(mailOptions);
 
     console.log('Message sent: %s', info.messageId);
 
-    // Respond to the client indicating success
     res.status(200).json({ message: 'Email sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
-    // Respond with an error status and message
+
     res
       .status(500)
       .json({ error: 'An error occurred while sending the email' });
   }
 });
 
-// Define your route for handling the POST request
 app.post('/send-booking', async (req, res) => {
   try {
     const { name, email } = req.body;
@@ -81,15 +98,14 @@ app.post('/send-booking', async (req, res) => {
       },
     });
 
-    // Compose the email content
     const mailOptions = {
       from: '"Lubesurgeons" <test@lubesurgeons.com>',
       to: email,
-      subject: 'Hello ✔',
+      subject: 'Appointment Details',
       text: `Hey ${name}!`,
       html: `<b>Hey ${name}!</b>`,
     };
-    // Send the email
+
     const info = await transporter.sendMail(mailOptions);
 
     console.log('Message sent: %s', info.messageId);

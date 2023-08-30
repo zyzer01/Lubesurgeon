@@ -9,7 +9,7 @@ function TestForm() {
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
-    const formData = { name, email };
+    const formData = { name, email, template: 'appointment' };
 
     axios
       .post('http://localhost:3000/send-email', formData)
