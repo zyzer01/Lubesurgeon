@@ -3,9 +3,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import { useState, useEffect } from 'react';
 import { supabase } from '../config/supabaseClient';
 import MyModal from '../../src/components/Modal';
-import { Link } from 'react-router-dom';
 import Roller from '../components/Roller';
-
 
 interface Booking {
   id: number;
@@ -45,7 +43,6 @@ const AdminOrders = () => {
     setVisibleBookings(2); // Hide additional vehicles
     setShowAll(false);
   };
-
 
   // Function to handle bookings deletion
   const handleDelete = async (bookingId: number) => {
@@ -195,7 +192,11 @@ const AdminOrders = () => {
             </thead>
             <tbody>
               {isLoading ? (
-                <tr><td><Roller /></td></tr>
+                <tr>
+                  <td>
+                    <Roller />
+                  </td>
+                </tr>
               ) : bookingData.length === 0 ? (
                 <tr className="text-gray-500 text-lg mt-5 flex justify-center">
                   <td>No bookings</td>
@@ -207,7 +208,9 @@ const AdminOrders = () => {
                       <h5 className="font-medium text-black dark:text-white">
                         {booking.carBrand}
                       </h5>
-                      <p className="text-sm font-medium">{booking.carModel}, ({booking.carYear})</p>
+                      <p className="text-sm font-medium">
+                        {booking.carModel}, ({booking.carYear})
+                      </p>
                       <p className="text-sm">{booking.vehicleType}</p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">

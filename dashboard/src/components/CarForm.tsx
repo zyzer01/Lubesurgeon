@@ -8,6 +8,7 @@ import Radio from './Radio';
 import { setHours, setMinutes } from 'date-fns';
 import { supabase } from '../config/supabaseClient';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ERROR_MESSAGE = {
   name: 'Name is required',
@@ -130,6 +131,13 @@ function CarForm() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    try {
+      await axios.post('http://localhost:3000/send-email', bookingFormData);
+      console.log('Email sent successfully');
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
 
     const validationErrors: ValidationErrors = {};
 

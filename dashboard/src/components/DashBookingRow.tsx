@@ -41,6 +41,16 @@ export default function DashBookingRow({ booking }) {
   };
 
   const handleFlutterPayment = useFlutterwave(config);
+
+  const handlePayment = () => {
+    handleFlutterPayment({
+      callback: (response) => {
+        console.log(response.status);
+        closePaymentModal(); // this will close the modal programmatically
+      },
+      onClose: () => {},
+    });
+  };
   //PAYMENT ENDS
 
   const formatDateTime = (dateTimeString: string | number | Date) => {
@@ -94,21 +104,22 @@ export default function DashBookingRow({ booking }) {
           </p>
         </td>
         <td>
-          <button
-            type="button"
-            className="bg:meta-3 text-meta-3 rounded-md border border-success px-4 py-2 text-sm font-medium hover:text-white hover:bg-success focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75"
-            onClick={() => {
-              handleFlutterPayment({
-                callback: (response) => {
-                  console.log(response);
-                  closePaymentModal(); // this will close the modal programmatically
-                },
-                onClose: () => {},
-              });
-            }}
-          >
-            Pay now
-          </button>
+          {booking.paymentStatus === 'successful' ? (
+            <button
+              type="button"
+              className="rounded-md border border-success px-4 py-2 text-sm font-medium text-white bg-success focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75"
+            >
+              Paid
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="bg:meta-3 text-meta-3 rounded-md border border-success px-4 py-2 text-sm font-medium hover:text-white hover:bg-success focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 relative"
+              onClick={handlePayment}
+            >
+              Pay now
+            </button>
+          )}
         </td>
       </tr>
     </tbody>
