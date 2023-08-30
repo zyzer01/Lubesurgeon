@@ -66,6 +66,45 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
+// Define your route for handling the POST request
+app.post('/send-booking', async (req, res) => {
+  try {
+    const { name, email } = req.body;
+
+    const transporter = nodemailer.createTransport({
+      host: 'mail.lubesurgeons.com',
+      port: 465,
+      secure: true,
+      auth: {
+        user: 'test@lubesurgeons.com',
+        pass: '?kH1v7)%c)Rh',
+      },
+    });
+
+    // Compose the email content
+    const mailOptions = {
+      from: '"Lubesurgeons" <test@lubesurgeons.com>',
+      to: email,
+      subject: 'Hello ✔',
+      text: `Hey ${name}!`,
+      html: `<b>Hey ${name}!</b>`,
+    };
+    // Send the email
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log('Message sent: %s', info.messageId);
+
+    // Respond to the client indicating success
+    res.status(200).json({ message: 'Email sent successfully' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    // Respond with an error status and message
+    res
+      .status(500)
+      .json({ error: 'An error occurred while sending the email' });
+  }
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
