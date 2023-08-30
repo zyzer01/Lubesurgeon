@@ -86,7 +86,17 @@ app.post('/send-email', async (req, res) => {
 
 app.post('/send-booking', async (req, res) => {
   try {
-    const { name, email } = req.body;
+    const {
+      name,
+      email,
+      service,
+      ngState,
+      lga,
+      date,
+      carBrand,
+      carModel,
+      carYear,
+    } = req.body;
 
     const transporter = nodemailer.createTransport({
       host: 'mail.lubesurgeons.com',
@@ -98,12 +108,33 @@ app.post('/send-booking', async (req, res) => {
       },
     });
 
+    const handlebarOptions = {
+      viewEngine: {
+        extName: '.handlebars',
+        partialsDir: path.resolve('./views'),
+        defaultLayout: false,
+      },
+      viewPath: path.resolve('./views'),
+      extName: '.handlebars',
+    };
+
+    transporter.use('compile', hbs(handlebarOptions));
+
     const mailOptions = {
       from: '"Lubesurgeons" <test@lubesurgeons.com>',
       to: email,
       subject: 'Appointment Details',
-      text: `Hey ${name}!`,
-      html: `<b>Hey ${name}!</b>`,
+      template: 'booking',
+      context: {
+        name: name,
+        service: service,
+        state: ngState,
+        lga: lga,
+        date: date,
+        carBrand: carBrand,
+        carModel: carModel,
+        carYear: carYear,
+      },
     };
 
     const info = await transporter.sendMail(mailOptions);

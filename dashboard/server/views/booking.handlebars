@@ -4,50 +4,54 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <meta http-equiv='X-UA-Compatible' content='ie=edge' />
     <title>Document</title>
-
-    <style>
-      h1 { color: red } p { color: blue }
-    </style>
-
-  </head>
-  <body>
     <style>
       .booking { overflow: auto; width: 100%; } .booking table { border: 1px
       solid #DEDEDF; height: 100%; width: 100%; table-layout: auto;
       border-collapse: collapse; border-spacing: 1px; text-align: left; }
-      .booking caption { caption-side: top; text-align: left; } .booking th {
-      border: 1px solid #DEDEDF; background-color: #031B2B; color: #FFFFFF;
-      padding: 10px; } .booking td { border: 1px solid #DEDEDF;
-      background-color: #FFFFFF; color: #000000; padding: 10px; }
+      .booking caption { caption-side: top; text-align: left; font-weight: bold;
+      margin-bottom: 5px; margin-top: 5px; } .booking th { border: 1px solid
+      #DEDEDF; background-color: #031B2B; color: #FFFFFF; padding: 10px; }
+      .booking td { border: 1px solid #DEDEDF; background-color: #FFFFFF; color:
+      #000000; padding: 10px; } .footer { text-align: center; font-size: small;
+      padding-top: 15px; padding-bottom: 5px;} .footer a {color: #FF9F15;}
     </style>
+  </head>
+  <body>
+    <p>Hi, {{name}} </p>
+    <p>Thank you for booking an Appointment on Lubesurgeons</p>
     <div class='booking' role='region' tabindex='0'>
       <table>
-        <caption>Your Appointment Details</caption>
+        <caption>Your Appointment Details:</caption>
         <thead>
           <tr>
             <th>Name</th>
-            <th><Details /></th>
+            <th>Details</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Service</td>
-            <td></td>
+            <td>Service:</td>
+            <td>{{service}}</td>
           </tr>
           <tr>
-            <td>Location</td>
-            <td></td>
+            <td>Location:</td>
+            <td>{{lga}}, {{state}}</td>
           </tr>
           <tr>
-            <td>Date</td>
-            <td></td>
+            <td>Date:</td>
+            <td>{{date}}</td>
           </tr>
           <tr>
-            <td>Vehicle</td>
-            <td></td>
+            <td>Vehicle:</td>
+            <td>{{carBrand}} {{carModel}}, ({{carYear}})</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <footer class='footer'>
+      <p>Copyright &copy; Lubesurgens 2023. All rights reserved.</p>
+      <p><a href='https://lubesurgeons.com'>Visit us</a></p>
+    </footer>
+
   </body>
 </html>
