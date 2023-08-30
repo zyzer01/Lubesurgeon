@@ -132,13 +132,6 @@ function CarForm() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    try {
-      await axios.post('http://localhost:3000/send-email', bookingFormData);
-      console.log('Email sent successfully');
-    } catch (error) {
-      console.error('Error sending email:', error);
-    }
-
     const validationErrors: ValidationErrors = {};
 
     if (!bookingFormData.name) {
@@ -191,6 +184,15 @@ function CarForm() {
       // Handle form submission here
       setIsLoading(true);
       try {
+        axios
+          .post('http://localhost:3000/send-booking', bookingFormData)
+          .then((response) => {
+            console.log(response.data.message);
+          })
+          .catch((error) => {
+            // setMessage('An error occurred while sending the email');
+            console.error('Error:', error);
+          });
         const servicePrice = servicePrices[bookingFormData.service];
         const { data, error } = await supabase
           .from('bookings')
