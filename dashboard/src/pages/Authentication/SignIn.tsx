@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import LogoDark from '../../images/logo/lubsurgeons logo.png';
 import Logo from '../../images/logo/lubsurgeons logo.png';
 import { supabase } from '../../config/supabaseClient';
+import ResetModal from '../../components/ResetModal';
 
 const ERROR_MESSAGE = {
   email: 'Email address is required',
@@ -27,10 +28,19 @@ const SignIn: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [authMessage, setAuthMessage] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [loginFormData, setLoginFormData] = useState<LoginFormProps>({
     email: '',
     password: '',
   });
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -274,7 +284,7 @@ const SignIn: React.FC = () => {
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
               <span className="mb-1.5 block font-medium">Back to home</span>
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
-                Sign In to Lubesurgeons
+                Sign in to your account
               </h2>
 
               <form onSubmit={handleSubmit}>
@@ -399,6 +409,16 @@ const SignIn: React.FC = () => {
                       </svg>
                     </span>
                   </div>
+                  <p className="text-end">
+                    <button
+                      type="button"
+                      className="text-end text-gray-500 mt-2 text-primary"
+                      onClick={openModal}
+                    >
+                      Forgot password?
+                    </button>
+                  </p>
+                  <ResetModal isOpen={isModalOpen} onClose={closeModal} />
                 </div>
 
                 <div className="mb-5">

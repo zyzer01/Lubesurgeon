@@ -70,27 +70,30 @@ const Vehicles = () => {
     if (vinExists) {
       setFormError('Vehicle with this VIN already exists.');
       return;
-    } else {
-      setFormError('');
-      console.log(formError);
-      // closeModal();
     }
+    console.log(formError);
+    setFormError((_prev) => '');
+    console.log(vehicleFormData.vin);
+    console.log(formError);
+    setFormError('');
+    console.log(formError);
+    // closeModal();
 
     //Adding vehicle to state
-    const newVehicle = {
-      carBrand: vehicleFormData.carBrand,
-      vin: vehicleFormData.vin,
-    };
-    setVehicles((prevVehicles) => [
-      ...prevVehicles,
-      {
-        id: prevVehicles.length + 1,
+
+    if (formError.length === 0) {
+      const newVehicle = {
         carBrand: vehicleFormData.carBrand,
         vin: vehicleFormData.vin,
-      },
-    ]);
-
-    if (Object.keys(formError).length === 0) {
+      };
+      setVehicles((prevVehicles) => [
+        ...prevVehicles,
+        {
+          id: prevVehicles.length + 1,
+          carBrand: vehicleFormData.carBrand,
+          vin: vehicleFormData.vin,
+        },
+      ]);
       // Handle form submission here
       setIsLoading(true);
       try {
