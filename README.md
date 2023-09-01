@@ -34,16 +34,16 @@ Run the development server:
   npm run dev
 ```
 
-Move to the backend directory with:
+Move to the dashboard directory with:
 
 ```bash
-  cd server
+  cd dashboard
 ```
 
 Run the development server:
 
 ```bash
-  npm run start
+  npm run dev
 ```
 
 Congrats, you have succesfuly installed Lubesurgeons!
