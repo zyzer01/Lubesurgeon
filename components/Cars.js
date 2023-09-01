@@ -14,7 +14,7 @@ function Cars(props) {
     '/images/cars/mercedes-benz-logo-vector-01 1.png',
     '/images/cars/bmw-logo-vector-01 1.png',
     '/images/cars/cadillac-logo 1.png',
-    '/images/cars/chevrolet-logo 1.png',
+    '/images/cars/chrysler-logo-2010-show 1.png',
     '/images/cars/aston-martin-logo-vector-01 1.png',
     '/images/cars/Dodge-logo-1990-2100x2100 1.png',
     '/images/cars/ford-logo 1.png',
@@ -29,7 +29,7 @@ function Cars(props) {
     '/images/cars/lexus-logo-vector 1.png',
     '/images/cars/volkswagen-logo-vector 1.png',
     '/images/cars/mazda-logo-vector-download 1.png',
-    '/images/cars/chrysler-logo-2010-show 1.png',
+    '/images/cars/chevrolet-logo 1.png',
     '/images/cars/nissan-vector-logo 1.png',
     '/images/cars/peugeot-logo-vector 1.png',
     '/images/cars/volvo-logo-vector 1.png',
@@ -51,7 +51,7 @@ function Cars(props) {
     rows: Math.ceil(carBrands.length / 6),
   };
   return (
-    <>
+    <section className="py-24">
       <Heading headTitle="Cars" sub="We fix nearly all makes and model of cars" />
       <div className="wrapper">
         <Slider {...settings}>
@@ -62,7 +62,7 @@ function Cars(props) {
           ))}
         </Slider>
       </div>
-    </>
+    </section>
   );
 }
 

@@ -10,7 +10,7 @@ import routes from './routes';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminUsers from './pages/AdminUsers';
 import AdminOrders from './pages/AdminOrders';
-import AdminSale from './pages/AdminSales';
+import AdminSales from './pages/AdminSales';
 import Book from './pages/Book';
 
 const DefaultLayout = lazy(() => import('./layout/DefaultLayout'));
@@ -56,7 +56,7 @@ function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="orders" element={<AdminOrders />} />
           <Route path="users" element={<AdminUsers />} />
-          <Route path="sales" element={<AdminSale />} />
+          <Route path="sales" element={<AdminSales />} />
         </Route>
       </Routes>
     </>

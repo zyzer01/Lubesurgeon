@@ -1,28 +1,52 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AdminBooking from '../components/AdminBooking';
-import { supabase } from '../config/supabaseClient';
+import { supabase } from '../config/supabaseAdminClient';
 import UserCard from '../components/UserCard';
 import UserIcon from '../images/icon/UserIcon';
 import OrderIcon from '../images/icon/OrderIcon';
 import SaleIcon from '../images/icon/SaleIcon';
 
-
 const AdminDashboard = () => {
-
   const navigate = useNavigate();
+  const [userCount, setUserCount] = useState(0);
+  const [orderCount, setOrderCount] = useState(0);
 
-    // Authentication Check
-    useEffect(() => {
-      const checkUserAuthentication = async () => {
-        const { data: { user } } = await supabase.auth.getUser();
-        if (!user) {
-          navigate('/admin/auth/signin');
-        }
-      };
-      checkUserAuthentication();
-    }, [navigate]);
+  // Authentication Check
+  // useEffect(() => {
+  //   const checkUserAuthentication = async () => {
+  //     const {
+  //       data: { user },
+  //     } = await supabase.auth.getUser();
+  //     if (!user) {
+  //       navigate('/admin/auth/signin');
+  //     }
+  //   };
+  //   checkUserAuthentication();
+  // }, [navigate]);
 
+  useEffect(() => {
+    const fetchUserCount = async () => {
+      const { data, error } = await supabase.auth.admin.listUsers();
+      if (error) {
+        console.error('Error fetching user list:', error);
+      } else {
+        setUserCount(data.users.length); // Set the user count to the length of the user list
+      }
+    };
+    fetchUserCount();
+  }, []);
+
+  useEffect(() => {
+    const fetchOrderCount = async () => {
+      const { data, count } = await supabase
+        .from('bookings')
+        .select('*', { count: 'exact', head: true }); // Replace with your actual table name
+
+      setOrderCount(count);
+    };
+    fetchOrderCount();
+  }, []);
 
   return (
     <>
@@ -33,19 +57,19 @@ const AdminDashboard = () => {
         <UserCard
           icon={<OrderIcon />}
           label="Orders"
-          count={2000}
+          count={orderCount} // Replace with your actual order count
           linkTo="orders"
         />
         <UserCard
           icon={<UserIcon />}
           label="Users"
-          count={2000}
+          count={userCount} // Display the fetched user count
           linkTo="users"
         />
         <UserCard
           icon={<SaleIcon />}
           label="Sales"
-          count={`N` + 2000}
+          count={`N` + 2000} // Replace with your actual sales count
           linkTo="sales"
         />
       </div>

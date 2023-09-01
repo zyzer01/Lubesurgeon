@@ -20,6 +20,7 @@ interface Booking {
 interface BookingRowProps {
   booking: Booking; // Specify the type of the booking prop
   onDelete: (id: number) => void;
+  onUpdate: any;
 }
 
 const BookingRow: React.FC<BookingRowProps> = ({
