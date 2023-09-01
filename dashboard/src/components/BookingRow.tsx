@@ -78,7 +78,7 @@ const BookingRow: React.FC<BookingRowProps> = ({
 
   //PAYMENT STARTS
   const config = {
-    public_key: 'FLWPUBK_TEST-1f09b7c98dbf6fd24417d32d4d9a6538-X',
+    public_key: import.meta.env.VITE_PUBLIC_FLUTTERWAVE_KEY,
     tx_ref: Date.now(),
     amount: booking.servicePrice,
     currency: 'NGN',

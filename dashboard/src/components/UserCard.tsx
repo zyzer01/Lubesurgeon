@@ -2,13 +2,13 @@ import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
 interface UserCardProps {
-  icon: ReactNode,
-  label: string,
-  count: string | number,
-  linkTo: string
+  icon: ReactNode;
+  label: string;
+  count: string | number;
+  linkTo: string;
 }
 
-const UserCard: React.FC<UserCardProps> = ({icon, label, count, linkTo}) => {
+const UserCard: React.FC<UserCardProps> = ({ icon, label, count, linkTo }) => {
   return (
     <div className="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
       <div className="flex h-12.5 w-12.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
@@ -20,7 +20,7 @@ const UserCard: React.FC<UserCardProps> = ({icon, label, count, linkTo}) => {
           <h4 className="text-title-md font-bold text-black dark:text-white">
             {label}
           </h4>
-          <span className="text-sm font-medium">{count}</span>
+          <span className="text-sm font-bold">{count}</span>
         </div>
         <Link to={linkTo}>
           <span className="flex items-center gap-1 text-sm font-medium text-form-input underline dark:text-white">

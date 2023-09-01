@@ -11,6 +11,7 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const [userCount, setUserCount] = useState(0);
   const [orderCount, setOrderCount] = useState(0);
+  const [salesTotal, setSalesTotal] = useState(0);
 
   // Authentication Check
   // useEffect(() => {
@@ -31,7 +32,7 @@ const AdminDashboard = () => {
       if (error) {
         console.error('Error fetching user list:', error);
       } else {
-        setUserCount(data.users.length); // Set the user count to the length of the user list
+        setUserCount(data.users.length);
       }
     };
     fetchUserCount();
@@ -41,11 +42,32 @@ const AdminDashboard = () => {
     const fetchOrderCount = async () => {
       const { data, count } = await supabase
         .from('bookings')
-        .select('*', { count: 'exact', head: true }); // Replace with your actual table name
+        .select('*', { count: 'exact', head: true });
 
       setOrderCount(count);
     };
     fetchOrderCount();
+  }, []);
+
+  useEffect(() => {
+    const fetchTotalSales = async () => {
+      const { data, error } = await supabase
+        .from('bookings')
+        .select('servicePrice')
+        .eq('paymentStatus', 'successful');
+
+      if (error) {
+        console.error('Error fetching total sales:', error);
+      } else {
+        if (data && data.length > 0) {
+          const totalSales = data.reduce((accumulator, currentValue) => {
+            return accumulator + currentValue.servicePrice;
+          }, 0);
+          setSalesTotal(totalSales);
+        }
+      }
+    };
+    fetchTotalSales();
   }, []);
 
   return (
@@ -69,7 +91,10 @@ const AdminDashboard = () => {
         <UserCard
           icon={<SaleIcon />}
           label="Sales"
-          count={`N` + 2000} // Replace with your actual sales count
+          count={Number(salesTotal).toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'NGN',
+          })}
           linkTo="sales"
         />
       </div>
