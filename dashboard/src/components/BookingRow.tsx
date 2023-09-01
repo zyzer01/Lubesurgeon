@@ -21,6 +21,7 @@ interface BookingRowProps {
   booking: Booking; // Specify the type of the booking prop
   onDelete: (id: number) => void;
   onUpdate: any;
+  openPopupWithMessage: any;
 }
 
 const BookingRow: React.FC<BookingRowProps> = ({
@@ -28,7 +29,6 @@ const BookingRow: React.FC<BookingRowProps> = ({
   onDelete,
   onUpdate,
 }) => {
-  const [orderBy, setOrderBy] = useState('created_at');
   const [fullName, setFullName] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState(null);
   const [email, setEmail] = useState(null);
@@ -136,7 +136,6 @@ const BookingRow: React.FC<BookingRowProps> = ({
 
   return (
     <>
-      {/* Cancel Modal */}
       <MyModal
         isOpen={cancelModalOpen}
         closeModal={() => setCancelModalOpen(false)}

@@ -4,13 +4,25 @@ import Vehicle from '../components/Vehicle';
 import { supabase } from '../config/supabaseClient';
 import { Link } from 'react-router-dom';
 import Roller from '../components/Roller';
+import Popup from '../components/Popup';
 
 const Dashboard = () => {
   const [visibleVehicles, setVisibleVehicles] = useState(2);
   const [isLoading, setIsLoading] = useState(true);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
   const [vehicles, setVehicles] = useState<
     { id: number; carBrand: string; vin: string }[]
   >([]);
+
+  const openPopup = (message) => {
+    setPopupMessage(message);
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   useEffect(() => {
     // Fetch data from Supabase and update the vehicles state
@@ -39,6 +51,7 @@ const Dashboard = () => {
 
   return (
     <>
+      <Popup isOpen={isPopupOpen} onClose={closePopup} message={popupMessage} />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-2 2xl:gap-7.5">
         {isLoading ? (
           <p className="text-gray-900 font-bold item-center text-center col-span-12">
@@ -71,7 +84,7 @@ const Dashboard = () => {
         </div>
       )}
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-        <DashboardBooking />
+        <DashboardBooking openPopup={openPopup} />
       </div>
     </>
   );

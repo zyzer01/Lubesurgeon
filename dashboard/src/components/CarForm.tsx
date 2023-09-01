@@ -8,7 +8,6 @@ import Radio from './Radio';
 import { setHours, setMinutes } from 'date-fns';
 import { supabase } from '../config/supabaseClient';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const ERROR_MESSAGE = {
   name: 'Name is required',
@@ -203,7 +202,6 @@ function CarForm() {
           // Handle the error
         } else {
           console.log('Data inserted successfully:', data);
-
           navigate('/');
         }
       } catch (error) {
@@ -573,7 +571,9 @@ function CarForm() {
             What kind of car do you drive?
           </h2>
           <Radio
-            handleBlur={handleBlur}
+            handleBlur={() => {
+              return handleBlur({ target: { name: 'vehicleType' } }); // Pass the field name explicitly
+            }}
             name="vehicleType"
             handleTypeChange={handleBookingChange}
             selectedType={bookingFormData.vehicleType}

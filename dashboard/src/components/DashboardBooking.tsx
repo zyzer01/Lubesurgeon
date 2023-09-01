@@ -17,7 +17,7 @@ interface Booking {
   // ... other properties
 }
 
-const DashboardBooking = () => {
+const DashboardBooking = ({ openPopup }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [orderBy, setOrderBy] = useState('created_at');
   const [bookingData, setBookingData] = useState<Booking[]>([]);
@@ -54,6 +54,7 @@ const DashboardBooking = () => {
     setBookingData((prevData) =>
       prevData.filter((booking) => booking.id !== id),
     );
+    openPopup('Appointment canceled successfully');
   };
 
   const handleUpdate = (id: number) => {

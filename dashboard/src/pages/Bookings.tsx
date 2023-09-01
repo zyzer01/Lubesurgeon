@@ -1,10 +1,25 @@
+import { useState } from 'react';
 import Breadcrumb from '../components/Breadcrumb';
 import BookingTable from '../components/BookingTable';
 import { Link } from 'react-router-dom';
+import Popup from '../components/Popup';
 
 const Bookings = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
+
+  const openPopup = (message) => {
+    setPopupMessage(message);
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+
   return (
     <>
+      <Popup isOpen={isPopupOpen} onClose={closePopup} message={popupMessage} />
       <Breadcrumb pageName="Bookings" />
       <div className="flex justify-end py-4">
         <Link
@@ -26,7 +41,7 @@ const Bookings = () => {
         </Link>
       </div>
       <div className="flex flex-col gap-10">
-        <BookingTable />
+        <BookingTable openPopup={openPopup} />
       </div>
     </>
   );

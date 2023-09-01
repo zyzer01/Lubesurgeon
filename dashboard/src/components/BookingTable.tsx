@@ -16,7 +16,7 @@ interface Booking {
   // ... other properties
 }
 
-const BookingTable = () => {
+const BookingTable = ({ openPopup }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [bookingData, setBookingData] = useState<Booking[]>([]);
   const [orderBy, setOrderBy] = useState('created_at');
@@ -66,6 +66,7 @@ const BookingTable = () => {
     setBookingData((prevData) =>
       prevData.filter((booking) => booking.id !== id),
     );
+    openPopup('Appointment canceled successfully');
   };
 
   const handleUpdate = (id: number) => {

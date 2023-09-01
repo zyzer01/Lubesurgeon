@@ -5,13 +5,22 @@ import carData from '../data/carData.json';
 import { supabase } from '../config/supabaseClient';
 import { User } from '@supabase/supabase-js';
 import Roller from '../components/Roller';
+import Popup from '../components/Popup';
+
+interface VehicleFormData {
+  carBrand: string;
+  vin: string;
+}
 
 const Vehicles = () => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
   const [formError, setFormError] = useState('');
-  const [vehicleFormData, setVehicleFormData] = useState({
+  const [popError, setPopError] = useState('');
+  const [vehicleFormData, setVehicleFormData] = useState<VehicleFormData>({
     carBrand: '',
     vin: '',
   });
@@ -43,6 +52,15 @@ const Vehicles = () => {
     setIsOpen(false);
   };
 
+  const openPopup = (message) => {
+    setPopupMessage(message);
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
@@ -53,39 +71,39 @@ const Vehicles = () => {
     }));
   };
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const vinExists = vehicles.some(
-      (vehicle) => vehicle.vin === vehicleFormData.vin,
-    );
+    // Clear any previous form errors
+    setFormError('');
+
+    // Form validation checks
     if (!vehicleFormData.carBrand || !vehicleFormData.vin) {
       setFormError('Please fill in all the fields correctly.');
       return;
     }
+
     if (vehicleFormData.vin.length !== 17) {
       setFormError('Incorrect VIN');
       return;
     }
+
+    const vinExists = vehicles.some(
+      (vehicle) => vehicle.vin === vehicleFormData.vin,
+    );
     if (vinExists) {
       setFormError('Vehicle with this VIN already exists.');
       return;
     }
-    console.log(formError);
-    setFormError((_prev) => '');
-    console.log(vehicleFormData.vin);
-    console.log(formError);
-    setFormError('');
-    console.log(formError);
-    // closeModal();
 
-    //Adding vehicle to state
+    setIsLoading(true);
 
-    if (formError.length === 0) {
+    try {
       const newVehicle = {
         carBrand: vehicleFormData.carBrand,
         vin: vehicleFormData.vin,
       };
+
       setVehicles((prevVehicles) => [
         ...prevVehicles,
         {
@@ -94,32 +112,29 @@ const Vehicles = () => {
           vin: vehicleFormData.vin,
         },
       ]);
-      // Handle form submission here
-      setIsLoading(true);
-      try {
-        const vehicleData = {
-          ...vehicleFormData,
-          userId: userId,
-        };
 
-        const { data, error } = await supabase
-          .from('vehicles')
-          .insert([vehicleData]);
+      // Insert the new vehicle data into the database
+      const vehicleData = {
+        ...newVehicle,
+        userId: userId,
+      };
 
-        if (error) {
-          console.error('Error inserting data:', error.message);
-          // Handle the error
-        } else {
-          console.log('Data inserted successfully:', data);
-          closeModal();
-        }
-      } catch (error) {
-        console.error('Error inserting data:', (error as Error).message);
-        // Handle the error
-      } finally {
-        setIsLoading(false);
+      const { data, error } = await supabase
+        .from('vehicles')
+        .insert([vehicleData]);
+
+      if (error) {
         closeModal();
+        openPopup('Error Inserting Vehicle');
+        setVehicles(vehicles);
+      } else {
+        closeModal();
+        openPopup('Vehicle added successfully');
       }
+    } catch (error) {
+      openPopup('Error Inserting Vehicle');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -128,21 +143,17 @@ const Vehicles = () => {
     setIsLoading(true);
     try {
       const { error } = await supabase.from('vehicles').delete().eq('id', id);
-
       if (error) {
+        openPopup('Error deleting vehicle');
         console.error('Error deleting vehicle:', error.message);
-        // Handle the error
       } else {
-        console.log('Vehicle deleted successfully');
-
-        // Remove the vehicle from the state
         setVehicles((prevVehicles) =>
           prevVehicles.filter((vehicle) => vehicle.id !== id),
         );
+        openPopup('Vehicle deleted successfully');
       }
     } catch (error) {
-      console.error('Error deleting vehicle:', (error as Error).message);
-      // Handle the error
+      openPopup('Error deleting vehicle');
     } finally {
       setIsLoading(false);
     }
@@ -167,8 +178,9 @@ const Vehicles = () => {
         }
       } catch (error) {
         console.error('Error fetching data:', (error as Error).message);
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
     fetchVehicles();
   }, []);
@@ -177,6 +189,7 @@ const Vehicles = () => {
 
   return (
     <>
+      <Popup isOpen={isPopupOpen} onClose={closePopup} message={popupMessage} />
       <div
         className={`fixed inset-0 flex items-center justify-center z-12  ${
           isOpen ? 'visible' : 'hidden'
@@ -280,6 +293,7 @@ const Vehicles = () => {
       </div>
       <Breadcrumb pageName="My Vehicles" />
       <div className="flex justify-end py-4">
+        <button onClick={openPopup}>Open Popup</button>
         <button
           onClick={openModal}
           className="inline-flex items-center justify-center gap-2.5 rounded-md bg-black py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"

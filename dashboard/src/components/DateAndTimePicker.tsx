@@ -1,17 +1,19 @@
-import { SetStateAction, useState } from 'react';
+import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { setHours, setMinutes } from 'date-fns';
 
-const DateAndTimePicker = () => {
-  const [selectedDate, setSelectedDate] = useState(
-    setHours(setMinutes(new Date(), 30), 16),
-  );
+interface DateAndTimePickerProps {
+  handleDateChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  selectedDate: string;
+  name: string;
+}
 
-  const handleDateChange = (date: SetStateAction<Date>) => {
-    setSelectedDate(date);
-  };
-
+const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
+  handleDateChange,
+  selectedDate,
+  name,
+}) => {
   const availableTimes = [];
   for (let hour = 7; hour <= 20; hour++) {
     availableTimes.push(setHours(setMinutes(new Date(), 0), hour));
@@ -21,7 +23,18 @@ const DateAndTimePicker = () => {
   return (
     <DatePicker
       selected={selectedDate}
-      onChange={handleDateChange}
+      onChange={(date) => {
+        // Create a synthetic event object to mimic the structure of an input event
+        const syntheticEvent = {
+          target: {
+            name,
+            value: date,
+          },
+        } as unknown as React.ChangeEvent<HTMLInputElement>;
+
+        // Call the parent component's event handler
+        handleDateChange(syntheticEvent);
+      }}
       showTimeSelect
       dateFormat="MMMM d, yyyy h:mm aa"
       includeTimes={availableTimes}
