@@ -22,11 +22,7 @@ A web app for booking vehicle maintenance and servicing
   pnpm install
 ```
 
-Moved to the Frontend directory with:
-
-```bash
-  cd client
-```
+- Clone the project
 
 Run the development server:
 
