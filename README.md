@@ -4,7 +4,6 @@ A web app for booking vehicle maintenance and servicing
 
 ## Acknowledgements
 
-- [Nextjs](https://nextjs.org/)
 - [My boss](https://github.com/sudhons)
 
 ## Screenshots
