@@ -9,7 +9,7 @@ A web app for booking vehicle maintenance and servicing
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://github.com/Zyzer01/Lubesurgeon/blob/main/public/images/Screenshot%202023-09-01%20at%2010.04.40.png)
 
 ## Installation
 
