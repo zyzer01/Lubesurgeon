@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Slider from 'react-slick';
 import Heading from './utilities/Heading';
 import '@/styles/swiper.css';

@@ -1,4 +1,3 @@
-import React from 'react';
 import Heading from '@/components/utilities/Heading';
 import AccordionItem from '@/components/utilities/Accordion';
 

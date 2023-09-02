@@ -1,4 +1,3 @@
-import React from "react";
 import Heading from "./utilities/Heading";
 import Sub from "./utilities/Sub";
 import Image from "next/image";

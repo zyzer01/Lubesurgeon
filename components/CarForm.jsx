@@ -1,6 +1,6 @@
 "use client";
 
-import { React, useState, useEffect, Fragment } from "react";
+import { useState, useEffect, Fragment } from "react";
 import carData from "/public/data/carData.json";
 import carYear from "/public/data/carYear.json";
 import statesData from "/public/data/statesData";

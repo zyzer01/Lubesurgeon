@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import React from 'react';
 import { isMobile } from 'react-device-detect';
 import openCar from '/public/images/open car.png';
 import heroCar from '/public/images/car and yellow background.png';

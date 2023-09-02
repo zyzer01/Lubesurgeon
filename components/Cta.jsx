@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 import maintenance from '/public/images/road-background.png';
 import mobileScreen from '/public/images/Home Screen 1.png';

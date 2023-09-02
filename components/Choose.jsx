@@ -1,4 +1,3 @@
-import React from 'react';
 import Heading from './utilities/Heading';
 import Image from 'next/image';
 import openCar from '/public/images/open car.png';
