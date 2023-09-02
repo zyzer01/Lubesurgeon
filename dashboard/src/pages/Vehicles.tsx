@@ -19,7 +19,6 @@ const Vehicles = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
   const [formError, setFormError] = useState('');
-  const [popError, setPopError] = useState('');
   const [vehicleFormData, setVehicleFormData] = useState<VehicleFormData>({
     carBrand: '',
     vin: '',
@@ -293,7 +292,6 @@ const Vehicles = () => {
       </div>
       <Breadcrumb pageName="My Vehicles" />
       <div className="flex justify-end py-4">
-        <button onClick={openPopup}>Open Popup</button>
         <button
           onClick={openModal}
           className="inline-flex items-center justify-center gap-2.5 rounded-md bg-black py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"

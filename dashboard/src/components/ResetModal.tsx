@@ -22,6 +22,8 @@ const ResetModal: FC<ResetModalProps> = ({ isOpen, onClose }) => {
   // State variables
   const [resetEmail, setResetEmail] = useState<ResetEmailProps>({ email: '' });
   const [formError, setFormError] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(false);
 
   // Handle form input change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,9 +51,11 @@ const ResetModal: FC<ResetModalProps> = ({ isOpen, onClose }) => {
       validationErrors.email = ERROR_MESSAGE.invalidEmail;
     }
 
+    setSuccessMessage('');
     setFormError(validationErrors.email || '');
 
     if (Object.keys(validationErrors).length === 0) {
+      setIsLoading(true);
       try {
         const { data, error } = await supabase.auth.resetPasswordForEmail(
           resetEmail.email, // Use the entered email
@@ -63,10 +67,14 @@ const ResetModal: FC<ResetModalProps> = ({ isOpen, onClose }) => {
         if (error) {
           console.error('Password reset error:', error.message);
         } else {
-          console.log('Password reset email sent successfully');
+          setSuccessMessage(
+            'Password reset sent. Check your inbox or spam folder',
+          );
         }
       } catch (error) {
         console.error('Password reset error:', (error as Error).message);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -110,7 +118,7 @@ const ResetModal: FC<ResetModalProps> = ({ isOpen, onClose }) => {
                   </svg>
                 </button>
               </div>
-              <div className="max-w-sm mx-auto py-3 px-2 space-y-3 text-center">
+              <div className="max-w-sm mx-auto pt-3 pb-4 px-2 space-y-3 text-center">
                 <h3 className="text-xl font-medium text-black">
                   Reset Password
                 </h3>
@@ -146,12 +154,17 @@ const ResetModal: FC<ResetModalProps> = ({ isOpen, onClose }) => {
                   type="submit"
                   className="block w-full mt-4 py-3 px-4 font-medium text-sm text-center text-white bg-bulaba hover:bg-slate-900 active:bg-bulaba rounded-lg ring-offset-2 ring-bulaba focus:ring-2"
                 >
-                  Reset Password
+                  {isLoading ? 'Loading...' : 'Reset Password'}
                 </button>
+                {formError && (
+                  <p className="text-danger mt-4 text-center">{formError}</p>
+                )}
+                {successMessage && (
+                  <p className="text-success mt-4 text-center">
+                    {successMessage}
+                  </p>
+                )}
               </div>
-              {formError && (
-                <p className="text-danger mt-2 text-center">{formError}</p>
-              )}
             </div>
           </div>
         </div>

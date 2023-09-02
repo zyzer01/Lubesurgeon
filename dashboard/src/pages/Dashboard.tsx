@@ -5,6 +5,7 @@ import { supabase } from '../config/supabaseClient';
 import { Link } from 'react-router-dom';
 import Roller from '../components/Roller';
 import Popup from '../components/Popup';
+import Alerts from './UiElements/Alerts';
 
 const Dashboard = () => {
   const [visibleVehicles, setVisibleVehicles] = useState(2);

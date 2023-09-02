@@ -22,32 +22,44 @@ function Footer(props) {
                 USEFUL LINKS
               </h2>
               <nav className="list-none mb-10">
-                <li>
+                <li className="mb-3">
                   <a href="null" className="text-gray-600 hover:text-gray-800">
-                    First Link
+                    Pricing
+                  </a>
+                </li>
+                <li className="mb-3">
+                  <a href="null" className="text-gray-600 hover:text-gray-800">
+                    Terms of service
                   </a>
                 </li>
                 <li>
                   <a href="null" className="text-gray-600 hover:text-gray-800">
-                    Second Link
+                    Privacy Policy
                   </a>
                 </li>
               </nav>
             </div>
             <div className="w-1/2 px-4">
               <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-                CATEGORIES
+                CONTACT
               </h2>
-              <nav className="list-none mb-10">
-                <li>
-                  <a href="null" className="text-gray-600 hover:text-gray-800">
-                    First Link
+              <nav className="list-none mb-10 flex flex-col">
+                <li className="mb-3">
+                  <a href="tel:09164764689" className="text-gray-600 hover:text-gray-800">
+                    +234 916 476 4689
+                  </a>
+                </li>
+                <li className="mb-3">
+                  <a
+                    href="mailto:info@lubesurgeons.com"
+                    className="text-gray-600 hover:text-gray-800">
+                    info@lubesurgeons.com
                   </a>
                 </li>
                 <li>
-                  <a href="null" className="text-gray-600 hover:text-gray-800">
-                    Second Link
-                  </a>
+                  <p className="text-gray-600 hover:text-gray-800">
+                    24, Aula Plaza, Mpape, Abuja, Nigeria
+                  </p>
                 </li>
               </nav>
             </div>

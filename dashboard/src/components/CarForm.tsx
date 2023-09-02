@@ -1,7 +1,7 @@
 import { useState, useEffect, Fragment, ChangeEvent, FormEvent } from 'react';
 import carData from '../data/carData.json';
 import carYear from '../data/carYear.json';
-import statesData from '../data/statesData';
+import statesData from '../data/statesData.json';
 import { Dialog, Transition } from '@headlessui/react';
 import DateAndTimePicker from './DateAndTimePicker';
 import Radio from './Radio';
@@ -547,24 +547,22 @@ function CarForm() {
                 </p>
               )}
             </div>
-            <div>
-              <div className="flex items-center w-full">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  fill="#212C47"
-                  className="bi bi-calendar-check-fill mr-2"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-5.146-5.146-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708z" />
-                </svg>
-                <DateAndTimePicker
-                  handleDateChange={handleBookingChange}
-                  selectedDate={bookingFormData.date}
-                  name="date"
-                />
-              </div>
+            <div className="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                fill="#212C47"
+                className="bi bi-calendar-check-fill mr-2"
+                viewBox="0 0 16 16"
+              >
+                <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-5.146-5.146-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708z" />
+              </svg>
+              <DateAndTimePicker
+                handleDateChange={handleBookingChange}
+                selectedDate={bookingFormData.date}
+                name="date"
+              />
             </div>
           </div>
           <h2 className="sm:text-2xl text-xl font-medium title-font mb-4 mt-8 text-form-strokedark">

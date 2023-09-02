@@ -15,7 +15,7 @@ function AccordionItem({ title, content }) {
       <div
         className="accordion-header flex justify-between bg-light mb-2 p-4 rounded-lg"
         onClick={toggleAccordion}>
-        <h3 className="text-base text-secondary">{title}</h3>
+        <h3 className="text-base font-medium text-balablue">{title}</h3>
         <svg className={`icon ${isOpen ? 'open' : 'closed'}`} viewBox="0 0 24 24">
           <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
         </svg>
