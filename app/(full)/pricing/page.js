@@ -1,6 +1,7 @@
 import React from 'react';
 import { OtherHero } from '@/components/OtherHero';
 import { Pricing } from '@/components/Pricing';
+import { Faq } from '@/components/Faq';
 
 const About = () => {
   return (
@@ -12,6 +13,7 @@ const About = () => {
         href="https://dashboard.lubesurgeons.com/book"
       />
       <Pricing />
+      <Faq />
     </div>
   );
 };

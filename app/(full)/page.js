@@ -2,7 +2,7 @@ import React from 'react';
 import Cta from '@/components/Cta';
 import Cars from '@/components/Cars';
 import Choose from '@/components/Choose';
-import Faq from '@/components/Faq';
+import { Faq } from '@/components/Faq';
 import Features from '@/components/Features';
 import Hero from '@/components/HomeHero';
 import Services from '@/components/Services';

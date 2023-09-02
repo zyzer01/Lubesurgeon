@@ -1,42 +1,30 @@
-import Heading from '@/components/utilities/Heading';
-import AccordionItem from '@/components/utilities/Accordion';
+import AccordionItem from '@/components/utilities/AccordionItem';
+import Heading from './utilities/Heading';
 
-function FAQ(props) {
+export const Faq = () => {
   return (
-    <section className="md:mt-24 px-16">
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <Heading headTitle="Frequently Asked Questions" />
-      <div className="flex flex-col px-6 md:flex-row md:space-x-8 lg:space-x-16 lg:px-20">
-        <div>
-          <AccordionItem
-            title="How can I book a car service with LubeSurgeons?"
-            content="My account was debited without my authorization can I claim back my money ... Hi, Sorry about the deduction of your airtime. Kindly share your complaint via ..."
-          />
-          <AccordionItem
-            title="How can I book a car service with LubeSurgeons?"
-            content="My account was debited without my authorization can I claim back my money ... Hi, Sorry about the deduction of your airtime. Kindly share your complaint via ..."
-          />
-          <AccordionItem
-            title="How can I book a car service with LubeSurgeons?"
-            content="My account was debited without my authorization can I claim back my money ... Hi, Sorry about the deduction of your airtime. Kindly share your complaint via ..."
-          />
-        </div>
-        <div>
-          <AccordionItem
-            title="How can I book a car service with LubeSurgeons?"
-            content="My account was debited without my authorization can I claim back my money ... Hi, Sorry about the deduction of your airtime. Kindly share your complaint via ..."
-          />
-          <AccordionItem
-            title="How can I book a car service with LubeSurgeons?"
-            content="My account was debited without my authorization can I claim back my money ... Hi, Sorry about the deduction of your airtime. Kindly share your complaint via ..."
-          />
-          <AccordionItem
-            title="How can I book a car service with LubeSurgeons?"
-            content="My account was debited without my authorization can I claim back my money ... Hi, Sorry about the deduction of your airtime. Kindly share your complaint via ..."
-          />
+      <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
+        <div class="space-y-4">
+          <AccordionItem title="The quick, brown fox jumps over a lazy dog?">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+            rem aperiam, eaque ipsa quae.
+          </AccordionItem>
+          <AccordionItem title="The first mate and his Skipper too will do?">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+            rem aperiam, eaque ipsa quae.
+          </AccordionItem>
+          <AccordionItem title="Is the Space Pope reptilian!?">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+            rem aperiam, eaque ipsa quae.
+          </AccordionItem>
+          <AccordionItem title="How much money you got on you?">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+            rem aperiam, eaque ipsa quae.
+          </AccordionItem>
         </div>
       </div>
-    </section>
+    </div>
   );
-}
-
-export default FAQ;
+};

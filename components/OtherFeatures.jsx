@@ -23,7 +23,7 @@ export const OtherFeatures = () => {
                   />
                 </svg>
               </div>
-              <h6 className="font-semibold leading-5">The quick, brown fox</h6>
+              <h6 className="font-semibold leading-5">Transparency</h6>
             </div>
             <p className="mb-2 text-sm text-gray-900">
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
@@ -58,7 +58,7 @@ export const OtherFeatures = () => {
                   />
                 </svg>
               </div>
-              <h6 className="font-semibold leading-5">Smooth as an android</h6>
+              <h6 className="font-semibold leading-5">Swiftness to the job</h6>
             </div>
             <p className="mb-2 text-sm text-gray-900">
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
@@ -93,7 +93,7 @@ export const OtherFeatures = () => {
                   />
                 </svg>
               </div>
-              <h6 className="font-semibold leading-5">This is about justice</h6>
+              <h6 className="font-semibold leading-5">Integrity</h6>
             </div>
             <p className="mb-2 text-sm text-gray-900">
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque

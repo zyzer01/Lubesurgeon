@@ -24,20 +24,14 @@ export const Pricing = () => {
               </div>
               <div className="flex items-center justify-center w-24 h-24 rounded-full bg-blue-50">
                 <svg
-                  className="w-10 h-10 text-gray-600"
-                  viewBox="0 0 24 24"
-                  strokeLinecap="round"
-                  strokeLidth="2">
-                  <path
-                    d="M12,7L12,7 c-1.657,0-3-1.343-3-3v0c0-1.657,1.343-3,3-3h0c1.657,0,3,1.343,3,3v0C15,5.657,13.657,7,12,7z"
-                    fill="none"
-                    stroke="currentColor"
-                  />
-                  <path
-                    d="M15,23H9v-5H7v-6 c0-1.105,0.895-2,2-2h6c1.105,0,2,0.895,2,2v6h-2V23z"
-                    fill="none"
-                    stroke="currentColor"
-                  />
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="35"
+                  height="35"
+                  fill="currentColor"
+                  class="bi bi-car-front"
+                  viewBox="0 0 16 16">
+                  <path d="M4 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm10 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM4.862 4.276 3.906 6.19a.51.51 0 0 0 .497.731c.91-.073 2.35-.17 3.597-.17 1.247 0 2.688.097 3.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 10.691 4H5.309a.5.5 0 0 0-.447.276Z" />
+                  <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM4.82 3a1.5 1.5 0 0 0-1.379.91l-.792 1.847a1.8 1.8 0 0 1-.853.904.807.807 0 0 0-.43.564L1.03 8.904a1.5 1.5 0 0 0-.03.294v.413c0 .796.62 1.448 1.408 1.484 1.555.07 3.786.155 5.592.155 1.806 0 4.037-.084 5.592-.155A1.479 1.479 0 0 0 15 9.611v-.413c0-.099-.01-.197-.03-.294l-.335-1.68a.807.807 0 0 0-.43-.563 1.807 1.807 0 0 1-.853-.904l-.792-1.848A1.5 1.5 0 0 0 11.18 3H4.82Z" />
                 </svg>
               </div>
             </div>
@@ -64,7 +58,7 @@ export const Pricing = () => {
           </div>
           <div>
             <a
-              href="/"
+              href="https://dashboard.lubesurgeons.com/book"
               className="inline-flex items-center justify-center w-full h-12 px-6 mb-4 font-medium tracking-wide text-white transition duration-200 bg-gray-800 rounded shadow-md hover:bg-gray-900 focus:shadow-outline focus:outline-none">
               Get my car washed
             </a>
@@ -82,39 +76,19 @@ export const Pricing = () => {
               </div>
               <div className="flex items-center justify-center w-24 h-24 rounded-full bg-indigo-50">
                 <svg
-                  className="w-10 h-10 text-deep-purple-accent-400"
-                  viewBox="0 0 24 24"
-                  strokeLinecap="round"
-                  strokeLidth="2">
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="35"
+                  height="35"
+                  fill="currentColor"
+                  class="bi bi-droplet-half"
+                  viewBox="0 0 16 16">
                   <path
-                    d="M4,7L4,7 C2.895,7,2,6.105,2,5v0c0-1.105,0.895-2,2-2h0c1.105,0,2,0.895,2,2v0C6,6.105,5.105,7,4,7z"
-                    fill="none"
-                    stroke="currentColor"
+                    fill-rule="evenodd"
+                    d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"
                   />
                   <path
-                    d="M6,21H3v-4 l-2,0v-5c0-1.105,0.895-2,2-2h1"
-                    fill="none"
-                    stroke="currentColor"
-                  />
-                  <path
-                    d="M20,7L20,7 c1.105,0,2-0.895,2-2v0c0-1.105-0.895-2-2-2h0c-1.105,0-2,0.895-2,2v0C18,6.105,18.895,7,20,7z"
-                    fill="none"
-                    stroke="currentColor"
-                  />
-                  <path
-                    d="M18,21h3v-4 l2,0v-5c0-1.105-0.895-2-2-2h-1"
-                    fill="none"
-                    stroke="currentColor"
-                  />
-                  <path
-                    d="M12,7L12,7 c-1.657,0-3-1.343-3-3v0c0-1.657,1.343-3,3-3h0c1.657,0,3,1.343,3,3v0C15,5.657,13.657,7,12,7z"
-                    fill="none"
-                    stroke="currentColor"
-                  />
-                  <path
-                    d="M15,23H9v-6H7v-5 c0-1.105,0.895-2,2-2h6c1.105,0,2,0.895,2,2v6h-2V23z"
-                    fill="none"
-                    stroke="currentColor"
+                    fill-rule="evenodd"
+                    d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"
                   />
                 </svg>
               </div>
@@ -142,7 +116,7 @@ export const Pricing = () => {
           </div>
           <div>
             <a
-              href="/"
+              href="https://dashboard.lubesurgeons.com/book"
               className="inline-flex items-center justify-center w-full h-12 px-6 mb-4 font-medium tracking-wide text-white transition duration-200 bg-gray-800 rounded shadow-md hover:bg-gray-900 focus:shadow-outline focus:outline-none">
               Get my oil changed
             </a>
