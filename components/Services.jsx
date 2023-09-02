@@ -1,4 +1,3 @@
-import React from 'react';
 import Flexitems from '@/components/utilities/Flexitems';
 import Image from 'next/image';
 import carTrunk from '/public/images/Car trunk area.png';
