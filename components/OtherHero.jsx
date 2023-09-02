@@ -1,5 +1,6 @@
-import Button from "./utilities/Button"
-export const OtherHero = ({heading, sub}) => {
+import Button from './utilities/Button';
+import Link from 'next/link';
+export const OtherHero = ({ heading, sub, buttonText, href }) => {
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="max-w-xl sm:mx-auto lg:max-w-2xl">
@@ -9,8 +10,7 @@ export const OtherHero = ({heading, sub}) => {
               <svg
                 className="w-10 h-10 text-deep-purple-accent-400"
                 stroke="currentColor"
-                viewBox="0 0 52 52"
-              >
+                viewBox="0 0 52 52">
                 <polygon
                   strokeWidth="3"
                   strokeLinecap="round"
@@ -27,37 +27,31 @@ export const OtherHero = ({heading, sub}) => {
                 <svg
                   viewBox="0 0 52 24"
                   fill="currentColor"
-                  className="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block"
-                >
+                  className="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
                   <defs>
                     <pattern
                       id="e77df901-b9d7-4b9b-822e-16b2d410795b"
                       x="0"
                       y="0"
                       width=".135"
-                      height=".30"
-                    >
+                      height=".30">
                       <circle cx="1" cy="1" r=".7" />
                     </pattern>
                   </defs>
-                  <rect
-                    fill="url(#e77df901-b9d7-4b9b-822e-16b2d410795b)"
-                    width="52"
-                    height="24"
-                  />
+                  <rect fill="url(#e77df901-b9d7-4b9b-822e-16b2d410795b)" width="52" height="24" />
                 </svg>
                 <span className="relative">{heading}</span>
               </span>
             </h2>
-            <p className="text-base text-gray-700 md:text-lg">
-              {sub}
-            </p>
+            <p className="text-base text-gray-700 md:text-lg">{sub}</p>
           </div>
           <div>
-          <Button text="Get started" />
+            <Link href={href}>
+              <Button text={buttonText} />
+            </Link>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
