@@ -12,7 +12,7 @@ function Hero(props) {
       <section className="md:px-16 px-6 py-16 lg:py-0 text-gray-600 body-font">
         <div className="grid md:grid-cols-2 items-center gap-24">
           <div>
-            <h1 className="xl:text-5xl lg:text-4xl mb-3 text-4xl font-bold tracking-wide text-balablue">
+            <h1 className="xl:text-5xl lg:text-4xl mb-3 text-4xl font-extrabold tracking-wide text-balablue">
               Spoil yourself with
               <br className="hidden lg:inline-block" />
               <span className="md:leading-normal leading-snug"> convenient car care</span>

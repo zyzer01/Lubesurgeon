@@ -22,17 +22,17 @@ function Footer(props) {
               </h2>
               <nav className="list-none mb-10">
                 <li className="mb-3">
-                  <a href="null" className="text-gray-600 hover:text-gray-800">
+                  <a href="/pricing" className="text-gray-600 hover:text-gray-800">
                     Pricing
                   </a>
                 </li>
                 <li className="mb-3">
-                  <a href="null" className="text-gray-600 hover:text-gray-800">
+                  <a href="terms" className="text-gray-600 hover:text-gray-800">
                     Terms of service
                   </a>
                 </li>
                 <li>
-                  <a href="null" className="text-gray-600 hover:text-gray-800">
+                  <a href="privacy-policy" className="text-gray-600 hover:text-gray-800">
                     Privacy Policy
                   </a>
                 </li>
