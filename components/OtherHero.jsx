@@ -1,5 +1,5 @@
 import Button from "./utilities/Button"
-export const OtherHero = ({heading}) => {
+export const OtherHero = ({heading, sub}) => {
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="max-w-xl sm:mx-auto lg:max-w-2xl">
@@ -50,8 +50,7 @@ export const OtherHero = ({heading}) => {
               </span>
             </h2>
             <p className="text-base text-gray-700 md:text-lg">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque rem aperiam, eaque ipsa quae.
+              {sub}
             </p>
           </div>
           <div>
