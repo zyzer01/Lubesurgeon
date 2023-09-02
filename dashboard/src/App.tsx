@@ -12,6 +12,7 @@ import AdminUsers from './pages/AdminUsers';
 import AdminOrders from './pages/AdminOrders';
 import AdminSales from './pages/AdminSales';
 import Book from './pages/Book';
+import { ResetPassword } from './pages/Authentication/ResetPassword';
 
 const DefaultLayout = lazy(() => import('./layout/DefaultLayout'));
 const AdminLayout = lazy(() => import('./layout/AdminLayout'));
@@ -35,6 +36,7 @@ function App() {
 
       <Routes>
         <Route path="/book" element={<Book />} />
+        <Route path="/reset" element={<ResetPassword />} />
         <Route path="/auth/signin" element={<SignIn />} />
         <Route path="/auth/signup" element={<SignUp />} />
         <Route element={<DefaultLayout />}>

@@ -10,10 +10,10 @@ const History = lazy(() => import('../pages/History'));
 const FormElements = lazy(() => import('../pages/Form/FormElements'));
 const FormLayout = lazy(() => import('../pages/Form/FormLayout'));
 const Profile = lazy(() => import('../pages/Profile'));
-const Settings = lazy(() => import('../pages/Settings'));
+const Contact = lazy(() => import('../pages/Contact'));
 
 const coreRoutes = [
-    {
+  {
     path: '/profile',
     title: 'Profile',
     component: Profile,
@@ -34,9 +34,9 @@ const coreRoutes = [
     component: History,
   },
   {
-    path: '/settings',
-    title: 'Settings',
-    component: Settings,
+    path: '/contact',
+    title: 'Contact',
+    component: Contact,
   },
   {
     path: '/vehicles',
@@ -66,7 +66,7 @@ const coreRoutes = [
   {
     path: '/sales',
     title: 'Users',
-    component: AdminSale
+    component: AdminSale,
   },
 ];
 
