@@ -25,6 +25,7 @@ const ERROR_MESSAGE = {
 };
 
 const Contact = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [formError, setFormError] = useState<ValidationErrors>({});
   const [contactFormData, setContactFormData] = useState<contactFormData>({
     fName: '',
@@ -80,14 +81,22 @@ const Contact = () => {
     setFormError(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
+      setIsLoading(true);
       try {
         axios
           .post('http://localhost:3000/send-message', contactFormData)
           .then((response) => {
             console.log(response.data.message);
+          })
+          .catch((error) => {
+            // setMessage('An error occurred while sending the email');
+            console.error('Error:', error);
           });
       } catch (error) {
-        console.log(error.message);
+        console.error('Error inserting data:', error.message);
+        // Handle the error
+      } finally {
+        setIsLoading(false);
       }
     }
     console.log(contactFormData);
@@ -195,7 +204,7 @@ const Contact = () => {
               </div>
 
               <button className="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray">
-                Send Message
+                {isLoading ? 'Loading...' : 'Send message'}
               </button>
             </div>
           </form>

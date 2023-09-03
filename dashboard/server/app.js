@@ -27,14 +27,11 @@ app.use(cors(corsOptions));
 // Serve static files from the "public" directory
 app.use(express.static('public'));
 
-// Routes
 app.use('/', indexRouter);
 
-// Define your route for handling the POST request
-app.post('/send-email', async (req, res) => {
+app.post('/send-message', async (req, res) => {
   try {
-    // Extract form input data (name and email) from the request body
-    const { name, email } = req.body;
+    const { fName, email, subject, message } = req.body;
 
     // Create a nodemailer transporter
     const transporter = nodemailer.createTransport({
@@ -60,13 +57,15 @@ app.post('/send-email', async (req, res) => {
     transporter.use('compile', hbs(handlebarOptions));
 
     const mailOptions = {
-      from: '"Lubesurgeons" <test@lubesurgeons.com>',
-      to: email,
-      subject: 'Hello ✔',
-      template: 'email',
+      from: email,
+      to: 'davidicfola@gmail.com',
+      subject: subject,
+      template: 'contact',
       context: {
-        title: 'Title Here',
-        text: 'Lorem ipsum dolor sit amet, consectetur...',
+        fName: fName,
+        email: email,
+        subject: subject,
+        message: message,
       },
     };
     // Send the email
@@ -83,6 +82,8 @@ app.post('/send-email', async (req, res) => {
       .json({ error: 'An error occurred while sending the email' });
   }
 });
+
+//Booking Form
 
 app.post('/send-booking', async (req, res) => {
   try {
