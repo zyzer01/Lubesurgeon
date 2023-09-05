@@ -5,7 +5,7 @@ export const ContentOne = () => {
           <div className="flex flex-col lg:flex-row">
             <div className="mb-6 lg:mb-0 lg:w-1/2 lg:pr-5">
               <h2 className="font-sans text-3xl font-bold tracking-tight text-balablue sm:text-4xl">
-              Discover the Difference
+              Discover the Difference {' '}
                 <br className="hidden md:block" />
                 with{' '}
                 <span className="inline-block text-primary">

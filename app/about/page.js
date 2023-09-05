@@ -3,6 +3,8 @@ import Heading from "@/components/utilities/Heading";
 import { OtherHero } from "@/components/OtherHero";
 import { OtherFeatures } from "@/components/OtherFeatures";
 import { ContentOne } from "@/components/ContentOne";
+import { jakarta } from '../../font'
+
 
 const featuredItems = [
   {
@@ -25,7 +27,7 @@ const featuredItems = [
 
 const About = () => {
   return (
-    <>
+    <div className={jakarta.className}>
       <OtherHero
         heading="Welcome to Lubesurgeons"
         sub="Your Trusted Partner for Vehicle Maintenance and Care"
@@ -34,7 +36,7 @@ const About = () => {
       />
       <OtherFeatures items={featuredItems} />
       <ContentOne />
-    </>
+    </div>
   );
 };
 
