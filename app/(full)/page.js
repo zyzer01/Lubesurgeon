@@ -16,16 +16,24 @@ export const metadata = {
 
 const accordionItems = [
   {
-    title: "What is Comprehensive Vehicle Maintenance?",
-    content: "Comprehensive Vehicle Maintenance includes a thorough inspection of your vehicle's engine, spark plug replacement, and interior cleaning to ensure your car runs smoothly and stays clean."
+    title: "How can I book a vehicle maintenance service with your company?",
+    content: "You can easily book a service with us by visiting our website and following the simple booking process. Choose your desired service, select a date and time, and provide your vehicle details. It's that easy!"
   },
   {
-    title: "Why is Engine Oil Change necessary?",
-    content: "Engine Oil Change involves replacing the old oil with fresh oil, which is crucial for your engine's health. It helps lubricate engine parts, reduce friction, and maintain optimal performance."
+    title: "What types of vehicle maintenance services do you offer?",
+    content: "We offer a wide range of services, including engine diagnostics, oil changes, tire services, brake repairs, and more. Check our services page for a complete list of services we provide."
   },
   {
-    title: "What does the Tire Care Service include?",
-    content: "The Tire Care Service covers tire inflation, tire tread repair, and the installation of new tires when needed. It ensures your tires are safe and in good condition for the road."
+    title: "How can I cancel or reschedule my appointment?",
+    content: "To cancel or reschedule your appointment, log in to your account on our website and go to the `Bookings` section. There, you can make changes to your scheduled services."
+  },
+  {
+    title: "Are your technicians certified and experienced?",
+    content: "Absolutely. Our technicians are highly trained, certified, and experienced in handling various vehicle maintenance tasks. Rest assured, your vehicle will be in expert hands."
+  },
+  {
+    title: "Do you provide pickup and drop-off services for customers?",
+    content: "Yes, we offer pickup and drop-off services within a specified area. This convenience ensures your vehicle is serviced without any hassle on your part."
   },
 ];
 

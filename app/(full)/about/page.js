@@ -2,22 +2,23 @@ import React from "react";
 import Heading from "@/components/utilities/Heading";
 import { OtherHero } from "@/components/OtherHero";
 import { OtherFeatures } from "@/components/OtherFeatures";
+import { ContentOne } from "@/components/ContentOne";
 
 const featuredItems = [
   {
     title: "Total Transparency",
     content:
-      "We prioritize transparency in all our services. We believe in providing clear and honest information to our customers so they can make informed decisions about their vehicle maintenance.",
+      "We provide clear and honest pricing, ensuring you always know what to expect.",
     button: 'Learn more',
     },
   {
     title: "Swiftness to the Job",
-    content: "We understand the importance of quick service when it comes to vehicle maintenance. Our skilled team is dedicated to delivering swift and efficient service to get you back on the road as soon as possible.",
+    content: "Our team is known for swift and efficient service to get you back on the road as soon as possible.",
     button: 'Learn more',
   },
   {
-    title: "Transparency",
-    content: "kjbfladc lacvknsak clas apk sl lo kn lofl kld ok mz.vfa",
+    title: "Reliability",
+    content: "Count on us for consistent and dependable vehicle maintenance solutions.",
     button: 'Learn more',
   },
 ];
@@ -32,6 +33,7 @@ const About = () => {
         buttonText="Get Started"
       />
       <OtherFeatures items={featuredItems} />
+      <ContentOne />
     </>
   );
 };
