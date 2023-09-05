@@ -4,6 +4,10 @@ import { Services } from "@/components/Services";
 import AccordionItem from "@/components/AccordionItem";
 import Heading from "@/components/utilities/Heading";
 
+export const metadata = {
+  title: 'Services',
+};
+
 const accordionItems = [
   {
     title: "What is Comprehensive Vehicle Maintenance?",

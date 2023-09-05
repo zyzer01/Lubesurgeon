@@ -3,9 +3,14 @@ import { Suspense } from 'react';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import { jakarta } from './font'
+import CookieManager from './cookieManager';
+
 
 export const metadata = {
-  title: 'Lubesurgeons - Your Mobile Mechanic Patner',
+  title: {
+    template: '%s | Lubesurgeons - Your Mobile Mechanic Patner',
+    default: 'Lubesurgeons - Your Mobile Mechanic Patner',
+  },
   description: "At Lubesurgeons, we're on a mission to transform the way you experience vehicle maintenance. Say goodbye to the hassle of traditional garages and hello to the convenience of our certified mobile mechanics.",
   openGraph: {
     title: 'Lubesurgeons - Your Mobile Mechanic Patner',
@@ -37,6 +42,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={jakarta.className}>
       <body className="flex-col min-h-screen" id="main-layout">
+      <CookieManager />
       <Nav />
         {children}
       <Footer />

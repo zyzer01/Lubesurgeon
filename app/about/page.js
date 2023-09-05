@@ -4,6 +4,10 @@ import { OtherHero } from "@/components/OtherHero";
 import { OtherFeatures } from "@/components/OtherFeatures";
 import { ContentOne } from "@/components/ContentOne";
 
+export const metadata = {
+    title: 'About',
+};
+
 const featuredItems = [
   {
     title: "Total Transparency",

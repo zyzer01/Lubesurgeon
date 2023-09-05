@@ -20,3 +20,10 @@ body {
   position: absolute;
   padding: 0.5rem;
 }
+
+a {
+  color: #FF9F15;
+}
+a:hover {
+  color: #da8612;
+}

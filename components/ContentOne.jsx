@@ -20,7 +20,7 @@ export const ContentOne = () => {
               <a
                 href="/"
                 aria-label=""
-                className="inline-flex items-center font-semibold transition-colors duration-200 text-balablue hover:text-bulaba"
+                className="inline-flex items-center font-semibold transition-colors duration-200"
               >
                 Learn more
               </a>

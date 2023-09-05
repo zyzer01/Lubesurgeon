@@ -9,7 +9,12 @@ import wallet from "/public/images/wallet pay.png";
 const items = [
   {
     src: schedule,
-    subText:  "Schedule your LubeSurgery using the website, or our iOS/Android app."
+    subText: (
+      <span>
+        Schedule your LubeSurgery using the{' '}
+        <a href='https://www.lubesurgeons.com/dashboard'>Website</a>
+      </span>
+    )
   },
   {
     src: quote,

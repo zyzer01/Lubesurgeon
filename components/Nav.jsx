@@ -52,7 +52,7 @@ function Nav() {
               </div>
             </div>
             <div className="">
-              <Link href="/login" className="underline text-balablue mt-4 mr-4 md:mt-0">
+              <Link href="https://dashboard.lubesurgeons.com/auth/signin" className="underline text-balablue mt-4 mr-4 md:mt-0">
                 Sign in
               </Link>
               <Link href="https://dashboard.lubesurgeons.com/book">
@@ -111,9 +111,9 @@ function Nav() {
 
                 <MobileLink to="https://dashboard.lubesurgeons.com/contact">Contact</MobileLink>
 
-                <MobileLink to="/book">Book</MobileLink>
+                <MobileLink to="https://dashboard.lubesurgeons.com/book">Book</MobileLink>
 
-                <MobileLink to="/signin">Sign in</MobileLink>
+                <MobileLink to="/https://dashboard.lubesurgeons.com/auth/signin">Sign in</MobileLink>
               </div>
             </div>
           )}
