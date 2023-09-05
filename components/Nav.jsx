@@ -41,9 +41,9 @@ function Nav() {
             </div>
             <div className="">
               <div className="">
-                <DesktopLink to="/pricing">Pricing</DesktopLink>
+                <DesktopLink to="/services">Services</DesktopLink>
                 <DesktopLink to="/about">About</DesktopLink>
-                <DesktopLink to="/how">How it Works</DesktopLink>
+                <DesktopLink to="https://dashboard.lubesurgeons.com/contact">Contact</DesktopLink>
               </div>
             </div>
             <div className="">
@@ -100,11 +100,11 @@ function Nav() {
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <MobileLink to="/pricing">Pricing</MobileLink>
+                <MobileLink to="/services">Services</MobileLink>
 
                 <MobileLink to="/about">About</MobileLink>
 
-                <MobileLink to="/how">How it Works</MobileLink>
+                <MobileLink to="https://dashboard.lubesurgeons.com/contact">Contact</MobileLink>
 
                 <MobileLink to="/book">Book</MobileLink>
 

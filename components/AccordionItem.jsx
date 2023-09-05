@@ -13,7 +13,7 @@ const AccordionItem = ({ title, children }) => {
         title="Open item"
         className="flex items-center justify-between w-full p-4 focus:outline-none"
         onClick={() => setIsOpen(!isOpen)}>
-        <p className="text-lg font-medium">{title}</p>
+        <p className="text-medium md:text-lg text-left font-medium">{title}</p>
         <div className="flex items-center justify-center w-8 h-8 border rounded-full">
           <svg
             viewBox="0 0 24 24"
@@ -33,8 +33,8 @@ const AccordionItem = ({ title, children }) => {
         </div>
       </button>
       {isOpen && (
-        <div className="p-4 pt-0">
-          <p className="text-gray-700">{children}</p>
+        <div className="p-4 bg-balablue text-white">
+          <p>{children}</p>
         </div>
       )}
     </div>
