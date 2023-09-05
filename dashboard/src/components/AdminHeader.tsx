@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
-import Logo from '../images/logo/logo-icon.svg';
+import Logo from '../images/logo/logo-icon.png';
 import DarkModeSwitcher from './DarkModeSwitcher';
 import DropdownNotification from './DropdownNotification';
-import DropdownUser from './DropdownUser';
 
 const AdminHeader = (props: {
   sidebarOpen: string | boolean | undefined;
