@@ -13,6 +13,10 @@ function Nav() {
     setIsOpen(!isOpen);
   };
 
+  const closeMobileMenu = () => {
+    setIsOpen(false);
+  };
+
   const DesktopLink = ({ to, children }) => (
     <Link
       href={to}
@@ -23,6 +27,7 @@ function Nav() {
 
   const MobileLink = ({ to, children }) => (
     <Link
+    onClick={closeMobileMenu}
       href={to}
       className="text-gray-900 hover:bg-balablue hover:text-white block px-3 py-2 rounded-md text-base font-medium">
       {children}
@@ -50,7 +55,7 @@ function Nav() {
               <Link href="/login" className="underline text-balablue mt-4 mr-4 md:mt-0">
                 Sign in
               </Link>
-              <Link href="/book">
+              <Link href="https://dashboard.lubesurgeons.com/book">
                 <Button text="Book Now" />
               </Link>
             </div>
