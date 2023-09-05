@@ -41,12 +41,10 @@ const Home = () => {
 
   const [isConsentModalOpen, setIsConsentModalOpen] = useState(true);
 
-
   useEffect(() => {
     // Check if the consent cookie is set
     const hasConsent = document.cookie.includes('consent=true');
     if (!hasConsent) {
-      // If the consent cookie is not set, show the consent modal
       setIsConsentModalOpen(true);
     }
   }, []);
@@ -62,11 +60,7 @@ const Home = () => {
     setIsConsentModalOpen(false);
   };
 
-
   const hasConsent = document.cookie.includes('consent=true');
-
-
-
 
   return (
     <div>

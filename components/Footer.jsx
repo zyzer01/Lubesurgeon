@@ -104,7 +104,7 @@ const Footer = () => {
           </li>
           <li>
             <a
-              href="/"
+              href="/privacy-policy"
               className="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
             >
               Privacy Policy
@@ -112,7 +112,7 @@ const Footer = () => {
           </li>
           <li>
             <a
-              href="/"
+              href="/terms"
               className="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
             >
               Terms &amp; Conditions

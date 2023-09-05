@@ -6,7 +6,7 @@ import { ContentOne } from "@/components/ContentOne";
 
 export const metadata = {
     title: 'About',
-};
+  };
 
 const featuredItems = [
   {
