@@ -48,7 +48,7 @@ export const metadata = {
     url: "https://lubesurgeons.com",
     siteName: "Lubesurgeons",
     image: {
-      url: "https://yourwebsite.com/images/og-image-homepage.jpg",
+      url: "https://lubesurgeons.com/regular.jpg",
       width: 1200,
       height: 630,
     },
@@ -58,14 +58,14 @@ export const metadata = {
   twitter: {
     cardType: "summary_large_image",
     image: {
-      url: "https://yourwebsite.com/images/twitter-image-homepage.jpg",
+      url: "https://lubesurgeons.com/Twitter.jpg",
       width: 1200,
       height: 600,
     },
   },
   whatsapp: {
     image: {
-      url: "https://yourwebsite.com/images/whatsapp-image-homepage.jpg",
+      url: "https://lubesurgeons.com/Whatsapp.jpg",
       width: 800,
       height: 400,
     },
