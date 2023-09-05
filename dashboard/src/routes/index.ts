@@ -6,7 +6,6 @@ const AdminOrders = lazy(() => import('../pages/AdminOrders'));
 const AdminSale = lazy(() => import('../pages/AdminSales'));
 const Vehicles = lazy(() => import('../pages/Vehicles'));
 const Bookings = lazy(() => import('../pages/Bookings'));
-const History = lazy(() => import('../pages/History'));
 const FormElements = lazy(() => import('../pages/Form/FormElements'));
 const FormLayout = lazy(() => import('../pages/Form/FormLayout'));
 const Profile = lazy(() => import('../pages/Profile'));
@@ -27,11 +26,6 @@ const coreRoutes = [
     path: '/forms/form-layout',
     title: 'Form Layouts',
     component: FormLayout,
-  },
-  {
-    path: '/history',
-    title: 'Service History',
-    component: History,
   },
   {
     path: '/contact',

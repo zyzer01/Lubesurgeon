@@ -5,9 +5,6 @@ import { supabase } from '../config/supabaseClient';
 import { Link } from 'react-router-dom';
 import Roller from '../components/Roller';
 import Popup from '../components/Popup';
-import Alerts from './UiElements/Alerts';
-import FormElements from './Form/FormElements';
-import FormLayout from './Form/FormLayout';
 
 const Dashboard = () => {
   const [visibleVehicles, setVisibleVehicles] = useState(2);
@@ -86,7 +83,6 @@ const Dashboard = () => {
           </span>
         </div>
       )}
-      <FormLayout />
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
         <DashboardBooking openPopup={openPopup} />
       </div>
