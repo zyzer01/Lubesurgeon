@@ -10,7 +10,7 @@ import ServiceSection from '@/components/ServiceSection';
 import AccordionItem from '@/components/AccordionItem';
 import Heading from '@/components/utilities/Heading';
 import ConsentModal from '@/components/ConsentModal';
-// import { cookies } from 'next/headers';
+import Cookies from 'js-cookie';
 
 
 const accordionItems = [
@@ -39,39 +39,41 @@ const accordionItems = [
 
 const Home = () => {
 
-  const [isConsentModalOpen, setIsConsentModalOpen] = useState(true);
+  // const [isConsentModalOpen, setIsConsentModalOpen] = useState(true);
+  // const [hasConsent, setHasConsent] = useState(false);
 
-  useEffect(() => {
-    // Check if the consent cookie is set
-    const hasConsent = document.cookie.includes('consent=true');
-    if (!hasConsent) {
-      setIsConsentModalOpen(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   // Check if the 'consent' cookie exists and is set to 'true'
+  //   const consentCookie = Cookies.get('consent');
+  //   if (consentCookie === 'true') {
+  //     setHasConsent(true);
+  //   }
+  // }, []);
 
-  const handleAccept = () => {
-    // Set a cookie to track user consent (e.g., 'consent=true').
-    document.cookie = 'consent=true; secure=true'; // Example cookie name and value
-    setIsConsentModalOpen(false);
-  };
+  // const handleAccept = () => {
+  //   // Set a cookie to track user consent (e.g., 'consent=true').
+  //   Cookies.set('consent', 'true', { secure: true }); // Example cookie name and value
+  //   setIsConsentModalOpen(false);
+  //   setHasConsent(true); // Update the consent status in state
+  // };
 
-  const handleReject = () => {
-    // Handle the "Reject" action (e.g., deny cookies).
-    setIsConsentModalOpen(false);
-  };
+  // const handleReject = () => {
+  //   // Handle the "Reject" action (e.g., deny cookies).
+  //   setIsConsentModalOpen(false);
+  // };
 
-  const hasConsent = document.cookie.includes('consent=true');
+  // // const hasConsent = document.cookie.includes('consent=true');
 
   return (
     <div>
-      {!hasConsent && (
+      {/* {hasConsent && (
       <ConsentModal
         isOpen={isConsentModalOpen}
         onAccept={handleAccept}
         onReject={handleReject}
         onClose={() => setIsConsentModalOpen(false)}
       />
-    )}
+    )} */}
       <Hero />
       <Features />
       <ServiceSection />
