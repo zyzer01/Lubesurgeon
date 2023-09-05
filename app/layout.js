@@ -15,6 +15,7 @@ export const metadata = {
   referrer: "origin-when-cross-origin",
   keywords: ["Vehicle", "Maintenance", "Servicing"],
   metadataBase: new URL("https://lubesurgeons.com"),
+  
   colorScheme: "white",
   alternates: {
     canonical: "/",
@@ -22,20 +23,24 @@ export const metadata = {
       "en-US": "/en-US",
     },
   },
-  icons: {
-    icon: [{ url: '/icon.png' }, new URL('/icon.png', 'https://example.com')],
-    shortcut: ['/shortcut-icon.png'],
-    apple: [
-      { url: '/apple-icon.png' },
-      { url: '/apple-icon-x3.png', sizes: '180x180', type: 'image/png' },
-    ],
-    other: [
-      {
-        rel: 'apple-touch-icon-precomposed',
-        url: '/apple-touch-icon-precomposed.png',
-      },
-    ],
+  robots: {
+    index: false,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
+
+
+
+
+
   openGraph: {
     title: "Lubesurgeons - Your Mobile Mechanic Patner",
     description:
