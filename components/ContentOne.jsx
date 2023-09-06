@@ -15,7 +15,7 @@ export const ContentOne = () => {
             </div>
             <div className="lg:w-1/2">
               <p className="mb-4 text-base text-gray-700">
-              At Lubesurgeons, we&apos;re dedicated to providing top-notch vehicle maintenance services that prioritize quality and convenience. Our certified technicians are here to ensure your vehicle runs at its best, offering a wide range of services tailored to your needs. Experience the future of vehicle maintenance with us.
+              At Lubesurgeons, we&apos;re dedicated to providing top-notch vehicle maintenance services that prioritize quality and convenience. Our experienced technicians are here to ensure your vehicle runs at its best, offering a wide range of services tailored to your needs. Experience the future of vehicle maintenance with us.
               </p>
               <a
                 href="/"
