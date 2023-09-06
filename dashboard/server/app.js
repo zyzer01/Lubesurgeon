@@ -7,6 +7,7 @@ const cors = require('cors');
 const port = process.env.PORT || 3000;
 const axios = require('axios');
 const hbs = require('nodemailer-express-handlebars');
+const fs = require('fs');
 const path = require('path');
 
 // Middleware to parse JSON and URL-encoded data
@@ -14,8 +15,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.engine('handlebars', exphbs());
-// app.set('view engine', 'handlebars');
 
 const corsOptions = {
   origin: ['http://localhost:5173'],
@@ -26,6 +25,10 @@ app.use(cors(corsOptions));
 
 // Serve static files from the "public" directory
 app.use(express.static('public'));
+
+// Read the image file and convert it to Base64
+const imagePath = path.join(__dirname, 'view', 'appointment-image.jpg');
+const imageBase64 = fs.readFileSync(imagePath, { encoding: 'base64' });
 
 app.use('/', indexRouter);
 
@@ -121,6 +124,18 @@ app.post('/send-booking', async (req, res) => {
 
     transporter.use('compile', hbs(handlebarOptions));
 
+    const formatDateTime = (dateTimeString) => {
+      const options = {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      };
+      return new Date(dateTimeString).toLocaleDateString('en-US', options);
+    };
+
+    
     const mailOptions = {
       from: '"Lubesurgeons" <test@lubesurgeons.com>',
       to: email,
@@ -131,11 +146,17 @@ app.post('/send-booking', async (req, res) => {
         service: service,
         state: ngState,
         lga: lga,
-        date: date,
+        date: formatDateTime(date),
         carBrand: carBrand,
         carModel: carModel,
         carYear: carYear,
+        imageUrl: `data:image/jpeg;base64,${imageBase64}`, 
       },
+      attachments: [{
+        filename: 'lubsurgeons dashlogo.png',
+          path: __dirname +'/views/lubsurgeons dashlogo.png',
+         cid: 'logo'
+  }],
     };
 
     const info = await transporter.sendMail(mailOptions);

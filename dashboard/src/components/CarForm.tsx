@@ -188,15 +188,15 @@ function CarForm() {
       // Handle form submission here
       setIsLoading(true);
       try {
-        // axios
-        //   .post('http://localhost:3000/send-booking', bookingFormData)
-        //   .then((response) => {
-        //     console.log(response.data.message);
-        //   })
-        //   .catch((error) => {
-        //     // setMessage('An error occurred while sending the email');
-        //     console.error('Error:', error);
-        //   });
+        axios
+          .post('http://localhost:3000/send-booking', bookingFormData)
+          .then((response) => {
+            console.log(response.data.message);
+          })
+          .catch((error) => {
+            // setMessage('An error occurred while sending the email');
+            console.error('Error:', error);
+          });
         const servicePrice = servicePrices[bookingFormData.service];
         const { data, error } = await supabase
           .from('bookings')
