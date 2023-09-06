@@ -22,7 +22,7 @@ function Hero(props) {
             </div>
             <p className="mb-6 md:mb-8 text-lg leading-relaxed">
               On-demand car care to transform your vehicle at home or at work. All we need is your
-              keys.
+              key.
             </p>
             <div className="flex justify-start">
               <button className="mr-3 inline-flex items-center bg-balablue border-2 border-balablue py-4 px-6 focus:outline-none hover:bg-headingColor hover:border-2 hover:border-balablue md:hover:scale-75 transition-all rounded-full text-white mt-4 md:mt-0">
