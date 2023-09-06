@@ -24,7 +24,7 @@ const accordionItems = [
   },
   {
     title: "How can I cancel or reschedule my appointment?",
-    content: "To cancel or reschedule your appointment, log in to your account on our website and go to the `Bookings` section. There, you can make changes to your scheduled services."
+    content: "To cancel or reschedule your appointment, log in to your account on our website and go to the 'Bookings' section. There, you can make changes to your scheduled services."
   },
   {
     title: "Are your technicians certified and experienced?",
