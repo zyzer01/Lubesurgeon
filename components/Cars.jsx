@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Slider from 'react-slick';
 import Heading from './utilities/Heading';
 import '@/styles/swiper.css';
-
+import Image from 'next/image';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -57,7 +57,7 @@ function Cars(props) {
         <Slider {...settings}>
           {carBrands.map((brand, index) => (
             <div key={index} className="py-5 -px-50">
-              <img src={brand} width={100} height={100} alt={`Car Brand ${index}`} />
+              <Image src={brand} width={100} height={100} alt={`Car Brand ${index}`} />
             </div>
           ))}
         </Slider>
