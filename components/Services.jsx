@@ -60,7 +60,7 @@ export const Services = () => {
   const services = [
     generateServices('Comprehensive Vehicle Maintenance', 3000, carSVG, ['Engine Inspection', 'Spark Plug Replacement', 'Interior Cleaning'], "Schedule Maintenance"),
     generateServices('Engine Oil Change', 5000, oilSVG, ['Oil Replacement', 'New Oil Installation', 'Fresh Oil Supply'], "Change Engine Oil"),
-    generateServices('Tire Care Service', 4000, tireSVG, ['Tire Inflation', 'Tire Tread Repair', 'New Tire Installation'], "Fix Tire Issues"),
+    generateServices('Tyre Care Service', 4000, tireSVG, ['Tire Inflation', 'Tire Tread Repair', 'New Tire Installation'], "Fix Tire Issues"),
     generateServices('Cooling System Maintenance', 10000, airConditionerSVG, ['Compressor Inspection', 'Air Filter Replacement', 'Coolant System Cleaning'], "Repair Cooling System"),
     generateServices('Brake System Checkup', 5000, pedalSVG, ['Brake Fluid Examination', 'Pedal Spring Inspection', 'Spring Maintenance'], "Fix Brakes"),
     generateServices('Additional Vehicle Services', 'x', otherSVG, ['Body Repair & Painting', 'Steering System Inspection', 'Starter/Charging System Service'], "Other Vehicle Services"),

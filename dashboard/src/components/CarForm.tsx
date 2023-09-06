@@ -95,8 +95,12 @@ function CarForm() {
   }, []);
 
   const servicePrices: Record<string, number> = {
-    'Car Wash': 2000,
+    'Vehicle Maintenance': 2000,
     'Oil Change': 5000,
+    'Tyre Service': 4000,
+    'Cooling System': 10000,
+    'Brake System': 5000,
+    'Additional Service': 0,  
   };
 
   const handleBookingChange = (
@@ -345,7 +349,7 @@ function CarForm() {
           </div>
         </Dialog>
       </Transition>
-      <div className="mx-auto px-4 px-md:px-8 lg:px-24 xl:px-30 bg-white h-screen py-15">
+      <div className="mx-auto px-4 px-md:px-8 lg:px-24 xl:px-30 bg-white h-full py-15">
         <div>
           <h1 className="sm:text-4xl text-2xl font-bold title-font py-4 text-bulaba">
             Start your booking
@@ -376,8 +380,12 @@ function CarForm() {
                   onChange={handleBookingChange}
                 >
                   <option value="">Enter a service</option>
-                  <option value="Car Wash">Car Wash</option>
-                  <option value="Oil Change">Oil Change</option>
+                  <option value="Vehicle Maintenance">Comprehensive Vehicle Maintenance</option>
+                  <option value="Oil Change">Engine Oil Change</option>
+                  <option value="Tyre Service">Tyre Care Service</option>
+                  <option value="Cooling System">Cooling System Maintenance</option>
+                  <option value="Brake System">Brake System Checkup</option>
+                  <option value="Additional Service">Additional Vehicle Services</option>
                 </select>
               </div>
               {errors.service && (

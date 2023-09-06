@@ -1,6 +1,7 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, SetStateAction, useState } from 'react';
 import Breadcrumb from '../components/Breadcrumb';
 import axios from 'axios';
+import Popup from '../components/Popup';
 
 interface contactFormData {
   fName: string;
@@ -34,6 +35,17 @@ const Contact = () => {
     subject: '',
     message: '',
   });
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
+
+  const openPopup = (message: SetStateAction<string>) => {
+    setPopupMessage(message);
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   const handleBookingChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -87,23 +99,26 @@ const Contact = () => {
           .post('http://localhost:3000/send-message', contactFormData)
           .then((response) => {
             console.log(response.data.message);
+            setIsLoading(false);
+            openPopup('Message Sent Successfully');
           })
           .catch((error) => {
-            // setMessage('An error occurred while sending the email');
+            openPopup('An Error Occured');
             console.error('Error:', error);
           });
       } catch (error) {
         console.error('Error inserting data:', error.message);
         // Handle the error
-      } finally {
-        setIsLoading(false);
       }
+      // } finally {
+      // }
     }
     console.log(contactFormData);
   };
 
   return (
     <>
+      <Popup isOpen={isPopupOpen} onClose={closePopup} message={popupMessage} />
       <Breadcrumb pageName="Contact" />
       <div className="grid grid-cols-5 gap-5">
         <div></div>
