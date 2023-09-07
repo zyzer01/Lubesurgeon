@@ -113,7 +113,9 @@ function Nav() {
 
                 <MobileLink to="/about">About</MobileLink>
 
-                <MobileLink to="https://www.dashboard.lubesurgeons.com/contact">Contact</MobileLink>
+                <MobileLink to="https://lubesurgeons-dashboard.vercel.app/contact">
+                  Contact
+                </MobileLink>
 
                 <MobileLink to="https://www.dashboard.lubesurgeons.com/book">Book</MobileLink>
 
