@@ -37,10 +37,6 @@ export const metadata = {
     },
   },
 
-
-
-
-
   openGraph: {
     title: "Lubesurgeons - Your Mobile Mechanic Patner",
     description:
@@ -55,22 +51,6 @@ export const metadata = {
     locale: "en_US",
     type: "website",
   },
-  twitter: {
-    cardType: "summary_large_image",
-    image: {
-      url: "https://lubesurgeons.com/Twitter.jpg",
-      width: 1200,
-      height: 600,
-    },
-  },
-  whatsapp: {
-    image: {
-      url: "https://lubesurgeons.com/Whatsapp.jpg",
-      width: 800,
-      height: 400,
-    },
-  },
-  
 };
 
 export default function RootLayout({ children }) {
