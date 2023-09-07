@@ -48,7 +48,7 @@ function Nav() {
               <div className="">
                 <DesktopLink to="/services">Services</DesktopLink>
                 <DesktopLink to="/about">About</DesktopLink>
-                <DesktopLink to="https://www.dashboard.lubesurgeons.com/contact">
+                <DesktopLink to="https://lubesurgeons-dashboard.vercel.app/contact">
                   Contact
                 </DesktopLink>
               </div>
