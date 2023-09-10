@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Transition } from '@headlessui/react';
 import Button from '@/components/utilities/Button';
-import logo from 'public/images/lubsurgeons logo.png';
+import logo from 'public/images/Lubesurgeons main logo.png';
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,16 +48,16 @@ function Nav() {
               <div className="">
                 <DesktopLink to="/services">Services</DesktopLink>
                 <DesktopLink to="/about">About</DesktopLink>
-                <DesktopLink to="https://lubesurgeons-dashboard.vercel.app">Contact</DesktopLink>
+                <DesktopLink to="https://dashboard.lubesurgeons.com/contact">Contact</DesktopLink>
               </div>
             </div>
             <div className="">
               <Link
-                href="https://www.dashboard.lubesurgeons.com/auth/signin"
+                href="https://dashboard.lubesurgeons.com/auth/signin"
                 className="underline text-balablue mt-4 mr-4 md:mt-0">
                 Sign in
               </Link>
-              <Link href="https://www.dashboard.lubesurgeons.com/book">
+              <Link href="https://dashboard.lubesurgeons.com/book">
                 <Button text="Book Now" />
               </Link>
             </div>
@@ -111,13 +111,11 @@ function Nav() {
 
                 <MobileLink to="/about">About</MobileLink>
 
-                <MobileLink to="https://lubesurgeons-dashboard.vercel.app/contact">
-                  Contact
-                </MobileLink>
+                <MobileLink to="https://dashboard.lubesurgeons.com/contact">Contact</MobileLink>
 
-                <MobileLink to="https://www.dashboard.lubesurgeons.com/book">Book</MobileLink>
+                <MobileLink to="https://dashboard.lubesurgeons.com/book">Book</MobileLink>
 
-                <MobileLink to="/https://www.dashboard.lubesurgeons.com/auth/signin">
+                <MobileLink to="/https://dashboard.lubesurgeons.com/auth/signin">
                   Sign in
                 </MobileLink>
               </div>
