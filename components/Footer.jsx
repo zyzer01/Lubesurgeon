@@ -8,9 +8,9 @@ const Footer = () => {
       <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-5">
         <div className="sm:col-span-2">
           <a href="/" aria-label="Go home" title="Company" className="inline-flex items-center">
-            <Image alt="ecommerce" src={logo} />
+            <Image alt="ecommerce" src={logo} width={250} height={400} />
           </a>
-          <div className="mt-6 lg:max-w-sm">
+          <div className="mt-2 lg:max-w-sm">
             <p className="text-sm text-gray-800">
               Lubesurgeons - Your Mobile Mechanic Solution. Experience hassle-free vehicle
               maintenance.
