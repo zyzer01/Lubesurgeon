@@ -3,6 +3,7 @@ import { isMobile } from 'react-device-detect';
 import openCar from '/public/images/open car.png';
 import heroCar from '/public/images/car and yellow background.png';
 import oppositeHero from '/public/images/opposite hero.png';
+import Link from 'next/link';
 
 function Hero(props) {
   const imageUrl = isMobile ? openCar : heroCar;
@@ -39,8 +40,9 @@ function Hero(props) {
                     d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.482 1.482 0 0 1 0-2.098L6.95.435Zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134Z"
                   />
                 </svg>
+
                 <span className="ml-3 flex items-start flex-col leading-none">
-                  Book an appointment
+                  <Link to="https://dashboard.lubesurgeons.com">Book an appointment</Link>
                 </span>
               </button>
             </div>
