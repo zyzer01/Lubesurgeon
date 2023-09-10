@@ -43,7 +43,7 @@ const Footer = () => {
             <p className="mr-1 text-gray-800 transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">
               Address:
             </p>
-            24, Aula Plaza, Mpape, Abuja, Nigeria
+            24, Asamankese Street, Zone 2, Wuse, Abuja.
           </div>
         </div>
         <div>
