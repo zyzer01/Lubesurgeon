@@ -1,26 +1,26 @@
-import "./globals.css";
-import { Suspense } from "react";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import { jakarta } from "./font";
-import CookieManager from "./cookieManager";
+import './globals.css';
+import { Suspense } from 'react';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
+import { jakarta } from './font';
+import CookieManager from './cookieManager';
 
 export const metadata = {
   title: {
-    template: "%s | Lubesurgeons - Your Mobile Mechanic Patner",
-    default: "Lubesurgeons - Your Mobile Mechanic Patner",
+    template: '%s | Lubesurgeons - Your Mobile Mechanic Patner',
+    default: 'Lubesurgeons - Your Mobile Mechanic Patner',
   },
   description:
     "At Lubesurgeons, we're on a mission to transform the way you experience vehicle maintenance. Say goodbye to the hassle of traditional garages and hello to the convenience of our certified mobile mechanics.",
-  referrer: "origin-when-cross-origin",
-  keywords: ["Vehicle", "Maintenance", "Servicing"],
-  metadataBase: new URL("https://lubesurgeons.com"),
-  
-  colorScheme: "white",
+  referrer: 'origin-when-cross-origin',
+  keywords: ['Vehicle', 'Maintenance', 'Servicing'],
+  metadataBase: new URL('https://lubesurgeons.com'),
+
+  colorScheme: 'white',
   alternates: {
-    canonical: "/",
+    canonical: '/',
     languages: {
-      "en-US": "/en-US",
+      'en-US': '/en-US',
     },
   },
   robots: {
@@ -38,18 +38,18 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "Lubesurgeons - Your Mobile Mechanic Patner",
+    title: 'Lubesurgeons - Your Mobile Mechanic Patner',
     description:
       "At Lubesurgeons, we're on a mission to transform the way you experience vehicle maintenance. Say goodbye to the hassle of traditional garages and hello to the convenience of our certified mobile mechanics.",
-    url: "https://lubesurgeons.com",
-    siteName: "Lubesurgeons",
+    url: 'https://lubesurgeons.com',
+    siteName: 'Lubesurgeons',
     image: {
-      url: "https://lubesurgeons.com/regular.jpg",
+      url: 'https://lubesurgeon.vercel.app/regular.jpg',
       width: 1200,
       height: 630,
     },
-    locale: "en_US",
-    type: "website",
+    locale: 'en_US',
+    type: 'website',
   },
 };
 
