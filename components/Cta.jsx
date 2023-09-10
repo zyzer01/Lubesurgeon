@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import dashboardImage from '/public/images/dashboard image.png';
+import Link from 'next/link';
 
 function CTA(props) {
   return (
@@ -35,14 +36,16 @@ function CTA(props) {
               dashboard.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-              <a
-                href="https://dashboard.lubesurgeons.com"
-                className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-                Get started
-              </a>
-              <a href="/services" className="text-sm font-semibold leading-6 text-white">
-                Learn more <span aria-hidden="true">→</span>
-              </a>
+              <Link href="https://dashboard.lubesurgeons.com">
+                <span className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                  Get started
+                </span>
+              </Link>
+              <Link href="/services">
+                <p className="text-sm font-semibold leading-6 text-white">
+                  Learn more <span aria-hidden="true">→</span>
+                </p>
+              </Link>
             </div>
           </div>
           <div className="relative mt-16 h-80 lg:mt-8">

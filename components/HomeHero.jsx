@@ -42,7 +42,11 @@ function Hero(props) {
                 </svg>
 
                 <span className="ml-3 flex items-start flex-col leading-none">
-                  <Link to="https://dashboard.lubesurgeons.com">Book an appointment</Link>
+                  <Link
+                    href="https://dashboard.lubesurgeons.com"
+                    className="text-white hover:text-white">
+                    Book an appointment
+                  </Link>
                 </span>
               </button>
             </div>

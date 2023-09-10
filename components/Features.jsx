@@ -11,7 +11,7 @@ const items = [
     src: schedule,
     subText: (
       <span>
-        Schedule your LubeSurgery using the <a href="https://dashboard.lubesurgeons.com">Website</a>
+        {/* Schedule your LubeSurgery using the <a href="https://dashboard.lubesurgeons.com">Website</a> */}
       </span>
     ),
   },
