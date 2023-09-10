@@ -41,7 +41,7 @@ function Nav() {
           <div className="hidden md:flex justify-between items-center">
             <div className="">
               <Link href="/">
-                <Image src={logo} width={200} height={400} alt="Workflow" />
+                <Image src={logo} width={200} height={350} alt="Workflow" />
               </Link>
             </div>
             <div className="">
