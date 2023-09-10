@@ -115,9 +115,7 @@ function Nav() {
 
                 <MobileLink to="https://dashboard.lubesurgeons.com/book">Book</MobileLink>
 
-                <MobileLink to="/https://dashboard.lubesurgeons.com/auth/signin">
-                  Sign in
-                </MobileLink>
+                <MobileLink to="https://dashboard.lubesurgeons.com/auth/signin">Sign in</MobileLink>
               </div>
             </div>
           )}
