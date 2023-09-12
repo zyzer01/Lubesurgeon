@@ -18,12 +18,12 @@ const services = [
   {
     url: autoCare,
     alt: 'schedule',
-    subText: 'Auto Care',
+    subText: 'Engine Oil Change',
   },
   {
     url: autoPart,
     alt: 'schedule',
-    subText: 'Auto Parts',
+    subText: 'Brake Servicing',
   },
   {
     url: autoService,
@@ -33,7 +33,7 @@ const services = [
   {
     url: fixUp,
     alt: 'schedule',
-    subText: 'Fix up',
+    subText: 'Car Wash',
   },
   {
     url: roadSide,
@@ -62,7 +62,7 @@ function ServiceSection(props) {
           <div className="flex mt-4 mb-8 md:mt-6 xl:pr-32 lg:pr-16 justify-center lg:justify-end">
             <div className="w-16 h-1 rounded-full bg-primary inline-flex"></div>
           </div>
-          <div className="grid grid-cols-3 md:gap-0 lg:grid-cols-2 items-center text-center">
+          <div className="grid grid-cols-3 md:gap-0 space-y-5 lg:grid-cols-2 items-center text-center">
             {services.map((service, index) => (
               <div key={index}>
                 <Flexitems url={service.url} alt={service.alt} subText={service.subText} />

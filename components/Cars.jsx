@@ -1,14 +1,7 @@
-'use client';
-
-import { useState } from 'react';
-import Slider from 'react-slick';
 import Heading from './utilities/Heading';
-import '@/styles/swiper.css';
 import Image from 'next/image';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
-function Cars(props) {
+function Cars() {
   const carBrands = [
     '/images/cars/acura-logo-vector-01 1.png',
     '/images/cars/mercedes-benz-logo-vector-01 1.png',
@@ -39,31 +32,38 @@ function Cars(props) {
     '/images/cars/maserati-logo-2006-900x1200 1.png',
     '/images/cars/porsche-logo 1.png',
   ];
-  var settings = {
-    infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: false,
-    speed: 3000,
-    autoplaySpeed: 3000,
-    pauseOnHover: false,
-    cssEase: 'linear',
-    rows: Math.ceil(carBrands.length / 6),
-  };
+
   return (
-    <section className="py-24">
+    <section className="py-24 px-8">
       <Heading headTitle="Cars" sub="We fix nearly all makes and model of cars" />
-      <div className="wrapper">
-        <Slider {...settings}>
-          {carBrands.map((brand, index) => (
-            <div key={index} className="py-5 -px-50">
-              <Image src={brand} width={100} height={100} alt={`Car Brand ${index}`} />
-            </div>
-          ))}
-        </Slider>
+      <div className="grid grid-cols-5 gap-5 justify-center">
+        {carBrands.map((brand, index) => (
+          <div key={index} className="flex justify-center">
+            <Image src={brand} width={100} height={50} alt={`Car Brand ${index}`} />
+          </div>
+        ))}
       </div>
     </section>
   );
 }
 
 export default Cars;
+
+// // pages/index.tsx
+// import type { NextPage } from "next";
+// const Home: NextPage = () => {
+//   const items = new Array(12).fill("x");
+//   return (
+//     <div className="m-2 grid grid-cols-12 gap-2">
+//       {items.map((item, i) => {
+//         return (
+//           <div
+//             key={i}
+//             className="col-span-6 md:col-span-4 lg:col-span-3 aspect-video w-full bg-gray-100"
+//           ></div>
+//         );
+//       })}
+//     </div>
+//   );
+// };
+// export default Home;

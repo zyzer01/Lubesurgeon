@@ -4,7 +4,7 @@ import React from 'react';
 function Flexitems(props) {
   return (
     <div>
-      <div className="inline-flex items-center mb-5">
+      <div className="inline-flex items-center">
         <Image src={props.url} alt={props.alt} />
       </div>
       <div className="flex-grow">
