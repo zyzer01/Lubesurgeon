@@ -16,7 +16,7 @@ export const metadata = {
   keywords: ['Vehicle', 'Maintenance', 'Servicing'],
   metadataBase: new URL('https://lubesurgeons.com'),
 
-  colorScheme: 'white',
+  themeColor: '#1F2B4A',
   alternates: {
     canonical: '/',
     languages: {
