@@ -9,5 +9,5 @@ export default function VideoAbout({ url }) {
     setIsLoaded(true);
   }, []);
 
-  return <>{isLoaded && <ReactPlayer url={url} />}</>;
+  return <>{isLoaded && <ReactPlayer url={url} width="100%" />}</>;
 }
