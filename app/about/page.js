@@ -13,17 +13,20 @@ const featuredItems = [
     title: 'Total Transparency',
     content: 'We provide clear and honest pricing, ensuring you always know what to expect.',
     button: 'Learn more',
+    link: '/services',
   },
   {
     title: 'Swiftness to the Job',
     content:
       'Our team is known for swift and efficient service to get you back on the road as soon as possible.',
     button: 'Learn more',
+    link: '/services',
   },
   {
     title: 'Reliability',
     content: 'Count on us for consistent and dependable vehicle maintenance solutions.',
     button: 'Learn more',
+    link: '/services',
   },
 ];
 

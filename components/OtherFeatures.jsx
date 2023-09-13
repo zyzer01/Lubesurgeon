@@ -1,4 +1,6 @@
-export const OtherFeatures = ({items}) => {
+import Link from 'next/link';
+
+export const OtherFeatures = ({ items }) => {
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="grid gap-8 row-gap-5 lg:grid-cols-3">
@@ -6,8 +8,7 @@ export const OtherFeatures = ({items}) => {
           <div
             key={index}
             className={`relative p-px overflow-hidden transition duration-300 transform border rounded shadow-sm hover:scale-105 group hover:shadow-xl
-        ${index === 1 && "border-balablue border-2"}`}
-          >
+        ${index === 1 && 'border-balablue border-2'}`}>
             <div className="absolute bottom-0 left-0 w-full h-1 duration-300 origin-left transform scale-x-0 bg-deep-purple-accent-400 group-hover:scale-x-100" />
             <div className="absolute bottom-0 left-0 w-1 h-full duration-300 origin-bottom transform scale-y-0 bg-deep-purple-accent-400 group-hover:scale-y-100" />
             <div className="absolute top-0 left-0 w-full h-1 duration-300 origin-right transform scale-x-0 bg-deep-purple-accent-400 group-hover:scale-x-100" />
@@ -18,8 +19,7 @@ export const OtherFeatures = ({items}) => {
                   <svg
                     className="w-8 h-8 text-deep-purple-accent-400"
                     stroke="currentColor"
-                    viewBox="0 0 52 52"
-                  >
+                    viewBox="0 0 52 52">
                     <polygon
                       strokeWidth="3"
                       strokeLinecap="round"
@@ -31,16 +31,12 @@ export const OtherFeatures = ({items}) => {
                 </div>
                 <h6 className="font-semibold leading-5">{item.title}</h6>
               </div>
-              <p className="mb-2 text-sm text-gray-900">
-                {item.content}
-              </p>
-              <a
-                href="/"
-                aria-label=""
-                className="inline-flex items-center text-sm font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-              >
+              <p className="mb-2 text-sm text-gray-900">{item.content}</p>
+              <Link
+                href={item.link}
+                className="inline-flex items-center text-sm font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">
                 {item.button}
-              </a>
+              </Link>
             </div>
           </div>
         ))}
