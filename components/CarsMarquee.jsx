@@ -6,7 +6,7 @@ import Heading from './utilities/Heading';
 const firstCarBrand = [
   '/images/cars/acura-logo-vector-01 1.png',
   '/images/cars/mercedes-benz-logo-vector-01 1.png',
-  '/images/cars/bmw-logo-vector-01 1.png',
+  '/images/cars/peugeot-logo-vector 1.png',
   '/images/cars/cadillac-logo 1.png',
   '/images/cars/chrysler-logo-2010-show 1.png',
   '/images/cars/aston-martin-logo-vector-01 1.png',
@@ -36,7 +36,7 @@ const thirdCarBrand = [
 const fourthCarBrand = [
   '/images/cars/nissan-vector-logo 1.png',
   '/images/cars/rolls-royce-logo 1.png',
-  '/images/cars/peugeot-logo-vector 1.png',
+  '/images/cars/bmw-logo-vector-01 1.png',
   '/images/cars/volvo-logo-vector 1.png',
   '/images/cars/Dodge-logo-1990-2100x2100 1.png',
   '/images/cars/maserati-logo-2006-900x1200 1.png',
@@ -50,14 +50,8 @@ export const CarsMarquee = () => {
 
       <Marquee direction={'right'} className="flex items-center mb-10">
         {firstCarBrand.map((brand, index) => (
-          <div key={index} className="mx-20 ">
-            <Image
-              className="gap-20"
-              src={brand}
-              width={100}
-              height={50}
-              alt={`Car Brand ${index}`}
-            />
+          <div key={index} className="mx-10 md:mx-20">
+            <Image src={brand} width={100} height={50} alt={`Car Brand ${index}`} />
           </div>
         ))}
       </Marquee>
@@ -66,11 +60,11 @@ export const CarsMarquee = () => {
         {secondCarBrand.map((brand, index) => (
           <div key={index} className="mx-20">
             <Image
-              className="gap-20"
               src={brand}
               width={100}
               height={50}
               alt={`Car Brand ${index}`}
+              className="w-16 sm:w-100"
             />
           </div>
         ))}
@@ -79,13 +73,7 @@ export const CarsMarquee = () => {
       <Marquee direction={'right'} className="flex items-center mb-10">
         {thirdCarBrand.map((brand, index) => (
           <div key={index} className="mx-20">
-            <Image
-              className="gap-20"
-              src={brand}
-              width={100}
-              height={50}
-              alt={`Car Brand ${index}`}
-            />
+            <Image src={brand} width={100} height={50} alt={`Car Brand ${index}`} />
           </div>
         ))}
       </Marquee>
@@ -94,11 +82,11 @@ export const CarsMarquee = () => {
         {fourthCarBrand.map((brand, index) => (
           <div key={index} className="mx-20">
             <Image
-              className="gap-20"
               src={brand}
               width={100}
               height={50}
               alt={`Car Brand ${index}`}
+              className="w-16 sm:w-100"
             />
           </div>
         ))}
