@@ -58,7 +58,7 @@ export const CarsMarquee = () => {
 
       <Marquee className="flex items-center mb-10">
         {secondCarBrand.map((brand, index) => (
-          <div key={index} className="mx-20">
+          <div key={index} className="mx-10 md:mx-20">
             <Image
               src={brand}
               width={100}
@@ -72,7 +72,7 @@ export const CarsMarquee = () => {
 
       <Marquee direction={'right'} className="flex items-center mb-10">
         {thirdCarBrand.map((brand, index) => (
-          <div key={index} className="mx-20">
+          <div key={index} className="mx-10 md:mx-20">
             <Image src={brand} width={100} height={50} alt={`Car Brand ${index}`} />
           </div>
         ))}
@@ -80,7 +80,7 @@ export const CarsMarquee = () => {
 
       <Marquee>
         {fourthCarBrand.map((brand, index) => (
-          <div key={index} className="mx-20">
+          <div key={index} className="mx-10 md:mx-20">
             <Image
               src={brand}
               width={100}
