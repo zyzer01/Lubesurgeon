@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Cta from '@/components/Cta';
-import Cars from '@/components/Cars';
 import Choose from '@/components/Choose';
 import Features from '@/components/Features';
 import Hero from '@/components/HomeHero';
@@ -11,6 +10,7 @@ import AccordionItem from '@/components/AccordionItem';
 import Heading from '@/components/utilities/Heading';
 import ConsentModal from '@/components/ConsentModal';
 import Cookies from 'js-cookie';
+import { CarsMarquee } from '@/components/CarsMarquee';
 
 const accordionItems = [
   {
@@ -92,7 +92,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Cars />
+      <CarsMarquee />
       <Cta />
     </div>
   );

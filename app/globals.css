@@ -5,6 +5,7 @@
 root {
   position: "relative";
   min-height: "100";
+  outline: 2px red solid;
 }
 
 body {
