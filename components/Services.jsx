@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export const Services = () => {
   const carSVG = (
     <svg
@@ -86,12 +88,13 @@ export const Services = () => {
     </svg>
   );
 
-  const generateServices = (name, price, svg, features, button) => ({
+  const generateServices = (name, price, svg, features, button, link) => ({
     name,
     price,
     svg,
     features,
     button,
+    link,
   });
 
   const services = [
@@ -100,42 +103,48 @@ export const Services = () => {
       3000,
       carSVG,
       ['Engine Inspection', 'Spark Plug Replacement', 'Interior Cleaning'],
-      'Schedule Maintenance'
+      'Schedule Maintenance',
+      'https://dashboard.lubesurgeons.com/book'
     ),
     generateServices(
       'Engine Oil Change',
       5000,
       oilSVG,
       ['Oil Replacement', 'New Oil Installation', 'Fresh Oil Supply'],
-      'Change Engine Oil'
+      'Change Engine Oil',
+      'https://dashboard.lubesurgeons.com/book'
     ),
     generateServices(
       'Tyre Care Service',
       4000,
       tireSVG,
       ['Tire Inflation', 'Tire Tread Repair', 'New Tire Installation'],
-      'Fix Tire Issues'
+      'Fix Tire Issues',
+      'https://dashboard.lubesurgeons.com/book'
     ),
     generateServices(
       'Cooling System Maintenance',
       10000,
       airConditionerSVG,
       ['Compressor Inspection', 'Air Filter Replacement', 'Coolant System Cleaning'],
-      'Repair Cooling System'
+      'Repair Cooling System',
+      'https://dashboard.lubesurgeons.com/book'
     ),
     generateServices(
       'Brake System Checkup',
       5000,
       pedalSVG,
       ['Brake Fluid Examination', 'Pedal Spring Inspection', 'Spring Maintenance'],
-      'Fix Brakes'
+      'Fix Brakes',
+      'https://dashboard.lubesurgeons.com/book'
     ),
     generateServices(
       'Additional Vehicle Services',
       'x',
       otherSVG,
       ['Body Repair & Painting', 'Steering System Inspection', 'Starter/Charging System Service'],
-      'Other Vehicle Services'
+      'Other Vehicle Services',
+      'https://dashboard.lubesurgeons.com/contact'
     ),
   ];
 
@@ -188,11 +197,11 @@ export const Services = () => {
               </div>
             </div>
             <div>
-              <a
-                href="https://dashboard.lubesurgeons.com/book"
+              <Link
+                href={service.link}
                 className="inline-flex items-center justify-center w-full h-12 px-6 mb-4 font-medium tracking-wide text-white transition duration-200 bg-gray-800 rounded shadow-md hover:bg-gray-900 focus:shadow-outline focus:outline-none">
                 {service.button}
-              </a>
+              </Link>
             </div>
           </div>
         ))}
