@@ -58,9 +58,9 @@ https://lubesurgeon.vercel.app
 
 ## Features
 
-- Secure Authentication Pages
-- Robust Form Validation
-- Clean Dashboard
+- Secure Authentication Pages.
+- Robust Form Validation.
+- Clean Dashboard.
 
 ## Support
 
