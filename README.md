@@ -54,7 +54,7 @@ You need NodeJS is version 16.0.0 upwards to install this project
 
 ## Demo
 
-https://lubesurgeons.vercel.app
+https://lubesurgeon.vercel.app
 
 ## Features
 
