@@ -56,12 +56,6 @@ You need NodeJS is version 16.0.0 upwards to install this project
 
 https://lubesurgeon.vercel.app
 
-## Features
-
-- Secure Authentication Pages.
-- Robust Form Validation.
-- Clean Dashboard.
-
 ## Support
 
 For support, send an email davidicfola@gmail.com
