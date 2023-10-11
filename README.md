@@ -1,6 +1,6 @@
 # Lubesurgeons
 
-A web apps for booking vehicle maintenance and servicing.
+A web app for booking vehicle maintenance and servicing.
 
 ## Acknowledgements
 
