@@ -2,7 +2,7 @@
 
 A web app for booking vehicle maintenance and servicing.
 
-## Acknowledgements
+## Acknowledgementsz
 
 - [My boss (Sudhons)](https://github.com/sudhons)
 
