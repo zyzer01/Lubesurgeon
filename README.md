@@ -6,7 +6,7 @@ A web app for booking automobile maintenance and servicing.
 
 - [My boss (Sudhons)](https://github.com/sudhons)
 
-## Screenshotsss
+## Screenshotss
 
 ![App Screenshot](https://github.com/Zyzer01/Lubesurgeon/blob/main/public/images/Screenshot%202023-09-01%20at%2010.04.40.png)
 
