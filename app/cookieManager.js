@@ -42,6 +42,6 @@ const CookieManager = () => {
   }, []);
 
   return null;
-};
+}; 
 
 export default CookieManager;
