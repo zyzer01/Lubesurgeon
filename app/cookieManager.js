@@ -24,7 +24,7 @@ const CookieManager = () => {
         return cookie.substring(cookieName.length, cookie.length);
       }
     } 
-    return null;
+    return null; 
   };
 
   useEffect(() => {
