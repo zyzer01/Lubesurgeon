@@ -3,7 +3,7 @@ import Link from 'next/link';
 import notFoundImage from '/public/images/404 Error lubesurgeons.svg';
 
 export default function NotFound() {
-  return (
+  return ( 
     <div className="grid justify-center"> 
       <div>
         <Image src={notFoundImage} alt="Not found error page" />
