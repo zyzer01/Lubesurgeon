@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 const CookieManager = () => {
   // Function to set a cookie with an expiration date
-  const setCookie = (name, value, days) => {
+  const setCookie = (name, value, days) => { 
     const date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
     const expires = `expires=${date.toUTCString()}`;
