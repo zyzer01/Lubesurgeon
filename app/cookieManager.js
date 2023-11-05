@@ -39,7 +39,7 @@ const CookieManager = () => {
 
     // Implement tracking pixel integration here (e.g., Facebook Pixel)
 
-  }, []);
+  }, []); 
 
   return null;
 }; 
