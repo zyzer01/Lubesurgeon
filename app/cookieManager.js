@@ -23,7 +23,7 @@ const CookieManager = () => {
       if (cookie.indexOf(cookieName) === 0) {
         return cookie.substring(cookieName.length, cookie.length);
       }
-    }
+    } 
     return null;
   };
 
