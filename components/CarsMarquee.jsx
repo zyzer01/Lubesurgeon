@@ -7,7 +7,7 @@ const firstCarBrand = [
   '/images/cars/acura-logo-vector-01 1.png',
   '/images/cars/mercedes-benz-logo-vector-01 1.png',
   '/images/cars/peugeot-logo-vector 1.png',
-  '/images/cars/cadillac-logo 1.png',
+  '/images/cars/cadillac-logo 1.png', 
   '/images/cars/chrysler-logo-2010-show 1.png',
   '/images/cars/aston-martin-logo-vector-01 1.png',
   '/images/cars/chevrolet-logo 1.png', 
