@@ -10,7 +10,7 @@ const firstCarBrand = [
   '/images/cars/cadillac-logo 1.png',
   '/images/cars/chrysler-logo-2010-show 1.png',
   '/images/cars/aston-martin-logo-vector-01 1.png',
-  '/images/cars/chevrolet-logo 1.png',
+  '/images/cars/chevrolet-logo 1.png', 
 ];
 
 const secondCarBrand = [
