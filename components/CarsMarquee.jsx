@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Heading from './utilities/Heading';
 
 const firstCarBrand = [
-  '/images/cars/acura-logo-vector-01 1.png',
+  '/images/cars/acura-logo-vector-01 1.png', 
   '/images/cars/mercedes-benz-logo-vector-01 1.png',
   '/images/cars/peugeot-logo-vector 1.png',
   '/images/cars/cadillac-logo 1.png', 
