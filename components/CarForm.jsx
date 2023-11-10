@@ -12,7 +12,7 @@ import supabase from "@/app/config/supabaseClient";
 import { useRouter } from "next/navigation";
 
 const ERROR_MESSAGE = {
-  name: "Name is required",
+  name: "Name is required", 
   email: "Email address is required",
   phoneNumber: "Phone number is required",
   ngState: "State is required",
