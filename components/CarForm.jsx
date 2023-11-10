@@ -25,7 +25,7 @@ const ERROR_MESSAGE = {
   service: "Service is required",
 };
 
-function CarForm() {
+function CarForm() { 
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
