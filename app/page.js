@@ -19,7 +19,7 @@ const accordionItems = [
       "You can easily book a service with us by visiting our website and following the simple booking process. Choose your desired service, select a date and time, and provide your vehicle details. It's that easy!",
   },
   {
-    title: 'What types of vehicle maintenance services do you offer?',
+    title: 'What types of vehicle maintenance services do you offer?', 
     content:
       'We offer a wide range of services, including engine diagnostics, oil changes, tire services, brake repair, and more. Check our services page for a complete list of services we provide.',
   },
