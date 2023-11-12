@@ -32,7 +32,7 @@ const accordionItems = [
     title: 'Are your technicians certified and experienced?',
     content:
       'Absolutely. Our technicians are highly trained 
-      , certified, and experienced in handling various vehicle maintenance tasks. Rest assured, your vehicle will be in expert hands.',
+    , certified, and experienced in handling various vehicle maintenance tasks. Rest assured, your vehicle will be in expert hands.',
   },
   {
     title: 'Do you provide pickup and drop-off services for customers?',
