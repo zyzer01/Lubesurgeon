@@ -21,7 +21,7 @@ const accordionItems = [
   {
     title: 'What types of vehicle maintenance services do you offer?',
     content:
-      'We offer a wide range of services, including engine diagnostics, oil changes, tire services, brake repairs, and more. Check our services page for a complete list of services we provide.',
+      'We offer a wide range of services, including engine diagnostics, oil changes, tire services, brake repair, and more. Check our services page for a complete list of services we provide.',
   },
   {
     title: 'How can I cancel or reschedule my appointment?',
