@@ -34,7 +34,7 @@ const accordionItems = [
       'Absolutely. Our technicians are highly trained, certified, and experienced in handling various vehicle maintenance tasks. Rest assured, your vehicle will be in expert hands.',
   },
   {
-    title: 'Do you provide pickup and drop-off services for customers?',
+    title: 'Do you provide pickup and drop-off services for customers?', 
     content:
       'Yes, we offer pickup and drop-off services within a specified area. This convenience ensures your vehicle is serviced without any hassle on your part.',
   },
