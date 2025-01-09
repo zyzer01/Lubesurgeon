@@ -48,16 +48,16 @@ function Nav() {
               <div className="">
                 <DesktopLink to="/services">Services</DesktopLink>
                 <DesktopLink to="/about">About</DesktopLink>
-                <DesktopLink to="https://dashboard.lubesurgeons.com/contact">Contact</DesktopLink>
+                <DesktopLink to="https://www.dashboard.lubesurgeons.com/contact">Contact</DesktopLink>
               </div>
             </div>
             <div className="">
               <Link
-                href="https://dashboard.lubesurgeons.com/auth/signin"
+                href="https://www.dashboard.lubesurgeons.com/auth/signin"
                 className="underline text-balablue mt-4 mr-4 md:mt-0">
                 Sign in
               </Link>
-              <Link href="https://dashboard.lubesurgeons.com/book">
+              <Link href="https://www.dashboard.lubesurgeons.com/book">
                 <Button text="Book Now" />
               </Link>
             </div>
@@ -111,11 +111,11 @@ function Nav() {
 
                 <MobileLink to="/about">About</MobileLink>
 
-                <MobileLink to="https://dashboard.lubesurgeons.com/contact">Contact</MobileLink>
+                <MobileLink to="https://www.dashboard.lubesurgeons.com/contact">Contact</MobileLink>
 
-                <MobileLink to="https://dashboard.lubesurgeons.com/book">Book</MobileLink>
+                <MobileLink to="https://www.dashboard.lubesurgeons.com/book">Book</MobileLink>
 
-                <MobileLink to="https://dashboard.lubesurgeons.com/auth/signin">Sign in</MobileLink>
+                <MobileLink to="https://www.dashboard.lubesurgeons.com/auth/signin">Sign in</MobileLink>
               </div>
             </div>
           )}
